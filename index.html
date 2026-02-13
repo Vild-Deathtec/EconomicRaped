@@ -10,20 +10,21 @@
       background: #0d0d0d;
       color: #eaeaea;
       font-family: Arial, sans-serif;
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
+      overflow-y: auto;
     }
 
     /* =======================
-       INTEGRANTES (ESQUERDA)
+       INTEGRANTES (FIXOS)
     ======================== */
     .members {
-      position: absolute;
+      position: fixed;
       left: 60px;
       top: 50%;
       transform: translateY(-50%);
       font-size: 23px;
       line-height: 2;
+      z-index: 5;
     }
 
     .members h2 {
@@ -46,11 +47,12 @@
        NOME DA BANDA (TOPO)
     ======================== */
     .band-name {
-      position: absolute;
+      position: fixed;
       left: 50%;
       top: 5%;
       transform: translateX(-50%);
       text-align: center;
+      z-index: 4;
     }
 
     .economic {
@@ -77,18 +79,21 @@
     }
 
     /* =======================
-       TEXTO CENTRAL (ABOUT)
+       CONTEÚDO CENTRAL (SCROLL)
     ======================== */
+    .content {
+      margin-top: 60vh;
+      padding-bottom: 200px;
+      display: flex;
+      justify-content: center;
+    }
+
     .center-text {
-      position: absolute;
-      left: 50%;
-      top: 58%;
-      transform: translate(-50%, -50%);
-      width: 60%;
+      width: 65%;
       text-align: center;
-      font-size: 17px;
-      line-height: 1.8;
-      color: #cfcfcf;
+      font-size: 22px;
+      line-height: 1.9;
+      color: #d6d6d6;
     }
 
     .center-text strong {
@@ -97,13 +102,13 @@
     }
 
     .center-text .en {
-      margin-top: 26px;
-      font-size: 15px;
-      color: #9a9a9a;
+      margin-top: 40px;
+      font-size: 19px;
+      color: #b0b0b0;
     }
 
     /* =======================
-       MINI PLAYER (INFERIOR DIREITO)
+       MINI PLAYER (FIXO)
     ======================== */
     .player-box {
       position: fixed;
@@ -160,30 +165,32 @@
     <div class="tagline">Metal Band</div>
   </div>
 
-  <!-- TEXTO CENTRAL -->
-  <div class="center-text">
-    <p>
-      <strong>Economic Raped</strong> é uma banda de metal fundada em
-      <strong>Santos/SP</strong> por <strong>Allison</strong> e <strong>Taigo</strong>,
-      com o objetivo de unir a intensidade emocional do emo à complexidade extrema
-      do <strong>metal técnico</strong>.  
-      A formação atual conta com <strong>Ana</strong> (vocal),
-      <strong>Allison</strong> (guitarra),
-      <strong>Ciclano</strong> (baixo) e
-      <strong>Taigo</strong> (bateria).
-    </p>
-
-    <div class="en">
+  <!-- CONTEÚDO CENTRAL (SCROLLA) -->
+  <div class="content">
+    <div class="center-text">
       <p>
-        <strong>Economic Raped</strong> is a metal band founded in
-        <strong>Santos, Brazil</strong>, by <strong>Allison</strong> and
-        <strong>Taigo</strong>, focused on blending emo-driven emotion with the
-        extreme complexity of <strong>technical metal</strong>.  
-        The lineup features <strong>Ana</strong> (vocals),
-        <strong>Allison</strong> (guitar),
-        <strong>Ciclano</strong> (bass), and
-        <strong>Taigo</strong> (drums).
+        <strong>Economic Raped</strong> é uma banda de metal fundada em
+        <strong>Santos/SP</strong> por <strong>Allison</strong> e <strong>Taigo</strong>,
+        com o objetivo de unir a intensidade emocional do emo à complexidade extrema
+        do <strong>metal técnico</strong>.
+        A formação atual conta com <strong>Ana</strong> (vocal),
+        <strong>Allison</strong> (guitarra),
+        <strong>Ciclano</strong> (baixo) e
+        <strong>Taigo</strong> (bateria).
       </p>
+
+      <div class="en">
+        <p>
+          <strong>Economic Raped</strong> is a metal band founded in
+          <strong>Santos, Brazil</strong>, by <strong>Allison</strong> and
+          <strong>Taigo</strong>, focused on blending emo-driven emotion with the
+          extreme complexity of <strong>technical metal</strong>.
+          The lineup features <strong>Ana</strong> (vocals),
+          <strong>Allison</strong> (guitar),
+          <strong>Ciclano</strong> (bass), and
+          <strong>Taigo</strong> (drums).
+        </p>
+      </div>
     </div>
   </div>
 
