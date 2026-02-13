@@ -49,25 +49,25 @@
     .band-name {
       position: fixed;
       left: 50%;
-      top: 5%;
+      top: 4%;
       transform: translateX(-50%);
       text-align: center;
       z-index: 4;
     }
 
     .band-logo {
-      max-width: 520px;
+      max-width: 680px; /* 🔥 MAIOR */
       width: 100%;
       height: auto;
       display: block;
       margin: 0 auto;
-      transition: opacity 0.4s ease, transform 0.4s ease;
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     .tagline {
       font-size: 14px;
       letter-spacing: 4px;
-      margin-top: 10px;
+      margin-top: 12px;
       color: #999;
       text-transform: uppercase;
     }
@@ -77,13 +77,13 @@
     ======================== */
     .content {
       max-width: 900px;
-      margin: 380px auto 220px auto;
+      margin: 420px auto 240px auto;
       padding: 0 20px;
       text-align: center;
     }
 
     .content p {
-      font-size: 22px;
+      font-size: 23px;
       line-height: 1.9;
       color: #cfcfcf;
     }
@@ -94,8 +94,8 @@
     }
 
     .content .en {
-      margin-top: 50px;
-      font-size: 19px;
+      margin-top: 60px;
+      font-size: 20px;
       color: #9a9a9a;
     }
 
@@ -165,8 +165,8 @@
     <p>
       <strong>Economic Raped</strong> é uma banda de metal fundada em
       <strong>Santos/SP</strong> por <strong>Allison</strong> e <strong>Taigo</strong>,
-      com o objetivo de unir a intensidade emocional do emo à complexidade extrema
-      do <strong>metal técnico</strong>.
+      unindo a intensidade emocional do emo à complexidade extrema do
+      <strong>metal técnico</strong>.
       A formação atual conta com <strong>Ana</strong> (vocal),
       <strong>Allison</strong> (guitarra),
       <strong>Ciclano</strong> (baixo) e
@@ -206,12 +206,14 @@
   <!-- SCRIPT SCROLL -->
   <script>
     window.addEventListener("scroll", () => {
-      const band = document.querySelector(".band-logo");
+      const logo = document.querySelector(".band-logo");
       const y = window.scrollY;
-      const opacity = Math.max(1 - y / 300, 0);
 
-      band.style.opacity = opacity;
-      band.style.transform = `translateY(${y * -0.15}px)`;
+      /* 🔥 Fade mais lento */
+      const opacity = Math.max(1 - y / 600, 0.25);
+
+      logo.style.opacity = opacity;
+      logo.style.transform = `translateY(${y * -0.08}px)`;
     });
   </script>
 
