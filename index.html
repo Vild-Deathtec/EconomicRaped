@@ -5,18 +5,52 @@
   <title>Economic Raped</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
       background: #0d0d0d;
       color: #eaeaea;
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 40px;
-      margin: 0;
     }
 
     a {
       color: #e63946;
       text-decoration: none;
+    }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ===== INTEGRANTES (ESQUERDA) ===== */
+    .members {
+      width: 280px;
+      padding: 40px 30px;
+      border-right: 1px solid #222;
+      text-align: left;
+    }
+
+    .members h2 {
+      font-size: 26px;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    .members p {
+      font-size: 20px; /* fonte aumentada */
+      margin: 15px 0;
+    }
+
+    /* ===== CONTEÚDO PRINCIPAL ===== */
+    .content {
+      flex: 1;
+      padding: 40px;
+      text-align: center;
     }
 
     /* ===== NOME DA BANDA ===== */
@@ -42,40 +76,66 @@
       letter-spacing: 0.2em;
     }
 
-    /* ===== TEXTO GERAL ===== */
-    p {
-      font-size: 18px;
-      margin: 10px 0;
+    /* ===== TEXTO ===== */
+    .content p {
+      font-size: 20px;
+      margin: 12px 0;
     }
 
-    h2 {
-      margin-top: 50px;
+    .content h2 {
+      margin-top: 60px;
       font-size: 28px;
       letter-spacing: 2px;
+    }
+
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .members {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #222;
+        text-align: center;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <h1 class="band-name">
-    <span class="economic">Economic</span>
-    <span class="raped">Raped</span>
-  </h1>
+  <div class="container">
 
-  <p>Technical Extreme Groove Metal</p>
+    <!-- INTEGRANTES -->
+    <aside class="members">
+      <h2>Integrantes</h2>
+      <p>Ana — Vocal</p>
+      <p>Allison — Guitarra</p>
+      <p>Ciclano — Baixo</p>
+      <p>Taigo — Bateria</p>
+    </aside>
 
-  <h2>Integrantes</h2>
-  <p>Ana — Vocal</p>
-  <p>Allison — Guitarra</p>
-  <p>Ciclano — Baixo</p>
-  <p>Taigo — Bateria</p>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="content">
 
-  <h2>Discografia</h2>
-  <p>EP Demo (2026)</p>
+      <h1 class="band-name">
+        <span class="economic">Economic</span>
+        <span class="raped">Raped</span>
+      </h1>
 
-  <h2>Contato</h2>
-  <p>Email: bandax@email.com</p>
+      <p>Technical Extreme Groove Metal</p>
+
+      <h2>Discografia</h2>
+      <p>EP Demo (2026)</p>
+
+      <h2>Contato</h2>
+      <p>Email: bandax@email.com</p>
+
+    </main>
+
+  </div>
 
 </body>
 </html>
