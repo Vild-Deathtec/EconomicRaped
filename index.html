@@ -32,60 +32,71 @@ body {
   font-size: 26px;
   letter-spacing: 2px;
   margin-bottom: 20px;
+  color: #fff;
 }
 
 .member {
   display: block;
+  color: #e63946; /* VERMELHO */
   transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .member:hover {
-  transform: scale(1.15);
-  color: #e63946;
+  transform: scale(1.25); /* AUMENTA MAIS */
+  color: #ff4d5a;
 }
 
 /* ================= CONTEÚDO ================= */
 .content {
   max-width: 900px;
   margin: 0 auto;
-  padding-top: 120px;
+  padding-top: 140px;
   padding-bottom: 300px;
 }
 
 /* ================= BLOCO DA LOGO ================= */
 .band-block {
   text-align: center;
-  margin-bottom: 180px;
+  margin-bottom: 200px;
 }
 
 .band-block img {
-  width: 560px; /* LOGO GRANDE */
-  max-width: 90vw;
+  width: 620px; /* LOGO MAIOR */
+  max-width: 92vw;
   display: block;
   margin: 0 auto;
+
+  /* CONTORNO / BRILHO VERMELHO */
+  filter:
+    drop-shadow(0 0 10px rgba(230,57,70,0.8))
+    drop-shadow(0 0 30px rgba(230,57,70,0.6));
 }
 
 .tagline {
-  margin-top: 12px;
+  margin-top: 14px;
   font-size: 14px;
   letter-spacing: 5px;
-  color: #aaa;
+  color: #e63946;
   text-transform: uppercase;
 }
 
 .divider {
-  width: 180px;
-  height: 1px;
-  background: #555;
-  margin: 14px auto 0;
+  width: 200px;
+  height: 2px;
+  background: #e63946;
+  margin: 16px auto 0;
 }
 
 /* ================= TEXTO ================= */
 .content p {
   font-size: 26px;
   line-height: 1.6;
-  margin-bottom: 80px;
+  margin-bottom: 90px;
   text-align: center;
+}
+
+.content strong {
+  color: #e63946;
 }
 
 .content .en {
@@ -109,7 +120,7 @@ body {
 <!-- CONTEÚDO -->
 <div class="content">
 
-  <!-- LOGO + TAGLINE + LINHA (ROLAM JUNTOS) -->
+  <!-- LOGO -->
   <div class="band-block">
     <img src="EconomicRaped/Logobanda.png" alt="Economic Raped Logo">
     <div class="tagline">Metal Band</div>
@@ -118,28 +129,33 @@ body {
 
   <!-- TEXTO PT -->
   <p>
-    <strong>Economic Raped</strong> é uma banda de metal fundada em Santos/SP por Allison e Taigo,
-    criada com o propósito de fundir a expressividade emocional do Emo com a
-    brutalidade e complexidade do metal extremamente técnico.
+    <strong>Economic Raped</strong> é uma banda de metal fundada em Santos/SP por
+    <strong>Allison</strong> e <strong>Taigo</strong>, com o objetivo de unir a
+    expressividade emocional do Emo à brutalidade e complexidade do
+    <strong>metal extremamente técnico</strong>.
     <br><br>
-    A banda constrói sua identidade a partir do contraste entre sentimento e precisão,
-    explorando composições intensas e altamente elaboradas.
+    A banda constrói sua identidade através do contraste entre sentimento e precisão,
+    entregando composições intensas, densas e altamente elaboradas.
     <br><br>
-    Atualmente, o grupo é formado por Ana (vocal), Allison (guitarra),
-    Ciclano (baixo) e Taigo (bateria).
+    A formação atual conta com <strong>Ana</strong> (vocal),
+    <strong>Allison</strong> (guitarra),
+    <strong>Ciclano</strong> (baixo) e
+    <strong>Taigo</strong> (bateria).
   </p>
 
   <!-- TEXTO EN -->
   <p class="en">
-    <strong>Economic Raped</strong> is a metal band founded in Santos, Brazil, by Allison and Taigo,
-    blending the emotional depth of Emo with the brutality and complexity
-    of highly technical metal.
+    <strong>Economic Raped</strong> is a metal band founded in Santos, Brazil, by
+    <strong>Allison</strong> and <strong>Taigo</strong>, blending emo-driven emotion
+    with the brutality and complexity of highly technical metal.
     <br><br>
-    The band’s identity is built on the contrast between raw emotion and precision,
-    delivering intense and carefully crafted compositions.
+    The band’s identity is shaped by the contrast between raw emotion and precision,
+    delivering intense and meticulously crafted compositions.
     <br><br>
-    The current lineup features Ana (vocals), Allison (guitar),
-    Ciclano (bass), and Taigo (drums).
+    The lineup features <strong>Ana</strong> (vocals),
+    <strong>Allison</strong> (guitar),
+    <strong>Ciclano</strong> (bass), and
+    <strong>Taigo</strong> (drums).
   </p>
 
 </div>
