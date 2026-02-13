@@ -1,224 +1,219 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Economic Raped</title>
+  <meta charset="UTF-8">
+  <title>Economic Raped</title>
 
-<style>
-* {
-  box-sizing: border-box;
-}
+  <style>
+    body {
+      margin: 0;
+      background: #0d0d0d;
+      color: #eaeaea;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
 
-body {
-  margin: 0;
-  background: #0d0d0d;
-  color: #eaeaea;
-  font-family: Arial, sans-serif;
-  overflow-y: auto;
-}
+    /* =======================
+       INTEGRANTES (FIXOS)
+    ======================== */
+    .members {
+      position: fixed;
+      left: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 23px;
+      line-height: 2;
+      z-index: 5;
+    }
 
-/* =======================
-   CONTAINER DE SCROLL
-======================= */
-.scroll-container {
-  min-height: 200vh; /* força scroll */
-  padding-top: 180px;
-}
+    .members h2 {
+      font-size: 26px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
 
-/* =======================
-   INTEGRANTES (FIXO)
-======================= */
-.members {
-  position: fixed;
-  left: 60px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 23px;
-  line-height: 2;
-  z-index: 10;
-}
+    .member {
+      display: block;
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
 
-.members h2 {
-  font-size: 26px;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
+    .member:hover {
+      transform: scale(1.15);
+      color: #e63946;
+    }
 
-.member {
-  display: block;
-  transition: transform 0.25s ease, color 0.25s ease;
-}
+    /* =======================
+       LOGO DA BANDA (SCROLL)
+    ======================== */
+    .band-name {
+      position: fixed;
+      left: 50%;
+      top: 5%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 4;
+    }
 
-.member:hover {
-  transform: scale(1.15);
-  color: #e63946;
-}
+    .band-logo {
+      max-width: 520px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
 
-/* =======================
-   NOME DA BANDA (SCROLL)
-======================= */
-.band-name {
-  position: fixed;
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  z-index: 9;
-  transition: transform 0.2s ease;
-}
+    .tagline {
+      font-size: 14px;
+      letter-spacing: 4px;
+      margin-top: 10px;
+      color: #999;
+      text-transform: uppercase;
+    }
 
-.economic {
-  font-size: 96px;
-  font-weight: 300;
-  letter-spacing: 6px;
-  display: block;
-}
+    /* =======================
+       CONTEÚDO CENTRAL
+    ======================== */
+    .content {
+      max-width: 900px;
+      margin: 380px auto 220px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
 
-.raped {
-  font-size: 128px;
-  font-weight: 900;
-  letter-spacing: 8px;
-  margin-top: -12px;
-  display: block;
-}
+    .content p {
+      font-size: 22px;
+      line-height: 1.9;
+      color: #cfcfcf;
+    }
 
-.tagline {
-  font-size: 14px;
-  letter-spacing: 4px;
-  margin-top: 10px;
-  color: #999;
-  text-transform: uppercase;
-}
+    .content strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
 
-/* =======================
-   TEXTO CENTRAL (SCROLL)
-======================= */
-.center-text {
-  max-width: 900px;
-  margin: 0 auto;
-  margin-top: 200px;
-  padding: 0 40px;
-  text-align: center;
-  font-size: 20px;
-  line-height: 1.9;
-  color: #cfcfcf;
-}
+    .content .en {
+      margin-top: 50px;
+      font-size: 19px;
+      color: #9a9a9a;
+    }
 
-.center-text strong {
-  color: #ffffff;
-}
+    /* =======================
+       MINI PLAYER (FIXO)
+    ======================== */
+    .player-box {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 260px;
+      padding: 12px;
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      text-decoration: none;
+      color: #aaa;
+      transition: transform 0.3s ease, background 0.3s ease;
+      z-index: 10;
+    }
 
-.center-text .en {
-  margin-top: 60px;
-  font-size: 17px;
-  color: #9a9a9a;
-}
+    .player-box:hover {
+      background: rgba(255,255,255,0.08);
+      transform: scale(1.03);
+    }
 
-/* =======================
-   MINI PLAYER (FIXO)
-======================= */
-.player-box {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  width: 260px;
-  padding: 12px;
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 8px;
-  color: #aaa;
-  transition: transform 0.3s ease, background 0.3s ease;
-  z-index: 10;
-}
+    .player-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      color: #999;
+    }
 
-.player-box:hover {
-  background: rgba(255,255,255,0.08);
-  transform: scale(1.03);
-}
-
-.player-label {
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-  color: #999;
-}
-
-.player-box iframe {
-  width: 100%;
-  height: 60px;
-  pointer-events: none;
-}
-</style>
+    .player-box iframe {
+      width: 100%;
+      height: 60px;
+      pointer-events: none;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- INTEGRANTES -->
-<div class="members">
-  <h2>Integrantes</h2>
-  <span class="member">Ana — Vocal</span>
-  <span class="member">Allison — Guitarra</span>
-  <span class="member">Ciclano — Baixo</span>
-  <span class="member">Taigo — Bateria</span>
-</div>
+  <!-- INTEGRANTES -->
+  <div class="members">
+    <h2>Integrantes</h2>
+    <span class="member">Ana — Vocal</span>
+    <span class="member">Allison — Guitarra</span>
+    <span class="member">Ciclano — Baixo</span>
+    <span class="member">Taigo — Bateria</span>
+  </div>
 
-<!-- TÍTULO -->
-<div class="band-name" id="bandTitle">
-  <span class="economic">ECONOMIC</span>
-  <span class="raped">RAPED</span>
-  <div class="tagline">Metal Band</div>
-</div>
+  <!-- LOGO -->
+  <div class="band-name">
+    <img 
+      src="Logobanda.png"
+      alt="Economic Raped"
+      class="band-logo"
+    >
+    <div class="tagline">Metal Band</div>
+  </div>
 
-<!-- CONTEÚDO COM SCROLL -->
-<div class="scroll-container">
-
-  <div class="center-text">
+  <!-- CONTEÚDO -->
+  <div class="content">
     <p>
       <strong>Economic Raped</strong> é uma banda de metal fundada em
       <strong>Santos/SP</strong> por <strong>Allison</strong> e <strong>Taigo</strong>,
       com o objetivo de unir a intensidade emocional do emo à complexidade extrema
       do <strong>metal técnico</strong>.
+      A formação atual conta com <strong>Ana</strong> (vocal),
+      <strong>Allison</strong> (guitarra),
+      <strong>Ciclano</strong> (baixo) e
+      <strong>Taigo</strong> (bateria).
     </p>
 
     <div class="en">
       <p>
-        <strong>Economic Raped</strong> is a metal band from
-        <strong>Santos, Brazil</strong>, blending emo-driven emotion with
-        <strong>technical metal</strong> brutality.
+        <strong>Economic Raped</strong> is a metal band founded in
+        <strong>Santos, Brazil</strong>, by <strong>Allison</strong> and
+        <strong>Taigo</strong>, blending emo-driven emotion with the extreme
+        complexity of <strong>technical metal</strong>.
+        The lineup features <strong>Ana</strong> (vocals),
+        <strong>Allison</strong> (guitar),
+        <strong>Ciclano</strong> (bass), and
+        <strong>Taigo</strong> (drums).
       </p>
     </div>
   </div>
 
-</div>
+  <!-- MINI PLAYER -->
+  <a 
+    href="https://open.spotify.com/track/SEU_LINK_DO_SPOTIFY"
+    target="_blank"
+    class="player-box"
+  >
+    <div class="player-label">Tocando agora</div>
 
-<!-- PLAYER -->
-<div class="player-box">
-  <div class="player-label">Tocando agora</div>
-  <iframe
-    scrolling="no"
-    frameborder="no"
-    allow="autoplay"
-    src="https://w.soundcloud.com/player/?url=https://soundcloud.com/SEU_USUARIO/SUA_MUSICA&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false">
-  </iframe>
-</div>
+    <iframe
+      scrolling="no"
+      frameborder="no"
+      allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https://soundcloud.com/SEU_USUARIO/SUA_MUSICA&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false">
+    </iframe>
+  </a>
 
-<script>
-const title = document.getElementById("bandTitle");
+  <!-- SCRIPT SCROLL -->
+  <script>
+    window.addEventListener("scroll", () => {
+      const band = document.querySelector(".band-logo");
+      const y = window.scrollY;
+      const opacity = Math.max(1 - y / 300, 0);
 
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-
-  const scale = Math.max(0.7, 1 - scrollY / 800);
-  const translateY = Math.min(scrollY * 0.3, 120);
-
-  title.style.transform = `
-    translate(-50%, ${translateY}px)
-    scale(${scale})
-  `;
-});
-</script>
+      band.style.opacity = opacity;
+      band.style.transform = `translateY(${y * -0.15}px)`;
+    });
+  </script>
 
 </body>
 </html>
