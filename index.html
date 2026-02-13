@@ -11,34 +11,24 @@
       color: #eaeaea;
       font-family: Arial, sans-serif;
       height: 100vh;
-      display: flex;
     }
 
-    .container {
-      display: flex;
-      width: 100%;
-    }
-
-    /* Lado esquerdo */
-    .left {
-      width: 35%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
+    /* Integrantes - esquerda meio */
     .members {
-      font-size: 22px;
-      line-height: 1.9;
+      position: absolute;
+      left: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 23px;
+      line-height: 2;
     }
 
     .members h2 {
-      margin-bottom: 18px;
       font-size: 26px;
       letter-spacing: 2px;
+      margin-bottom: 20px;
     }
 
-    /* Cada integrante */
     .member {
       display: block;
       transition: transform 0.25s ease, color 0.25s ease;
@@ -50,12 +40,12 @@
       color: #e63946;
     }
 
-    /* Centro */
-    .center {
-      width: 65%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    /* Nome da banda - centro um pouco acima */
+    .band-name {
+      position: absolute;
+      left: 50%;
+      top: 42%;
+      transform: translate(-50%, -50%);
       text-align: center;
     }
 
@@ -70,36 +60,26 @@
       font-size: 128px;
       font-weight: 900;
       letter-spacing: 8px;
+      margin-top: -12px;
       display: block;
-      margin-top: -10px;
-    }
-
-    p {
-      margin: 0;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
 
-    <div class="left">
-      <div class="members">
-        <h2>Integrantes</h2>
-        <span class="member">Ana — Vocal</span>
-        <span class="member">Allison — Guitarra</span>
-        <span class="member">Ciclano — Baixo</span>
-        <span class="member">Taigo — Bateria</span>
-      </div>
-    </div>
-
-    <div class="center">
-      <div>
-        <span class="economic">ECONOMIC</span>
-        <span class="raped">RAPED</span>
-      </div>
-    </div>
-
+  <div class="members">
+    <h2>Integrantes</h2>
+    <span class="member">Ana — Vocal</span>
+    <span class="member">Allison — Guitarra</span>
+    <span class="member">Ciclano — Baixo</span>
+    <span class="member">Taigo — Bateria</span>
   </div>
+
+  <div class="band-name">
+    <span class="economic">ECONOMIC</span>
+    <span class="raped">RAPED</span>
+  </div>
+
 </body>
 </html>
