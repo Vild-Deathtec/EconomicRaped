@@ -5,9 +5,7 @@
 <title>Economic Raped</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 :root {
   --bg: #0d0d0d;
@@ -18,7 +16,7 @@
   --glow-strong: rgba(230,57,70,0.6);
 }
 
-/* ===== MODO ALLISON ===== */
+/* ===== ALLISON ===== */
 body.allison {
   --bg: #080000;
   --red: #8b0000;
@@ -27,13 +25,13 @@ body.allison {
   --glow-strong: rgba(139,0,0,0.6);
 }
 
-/* ===== MODO TAIGO ===== */
+/* ===== TAIGO ===== */
 body.taigo {
   --bg: #0a0014;
-  --red: #8e2de2;
-  --red-hover: #a855f7;
-  --glow: rgba(142,45,226,0.8);
-  --glow-strong: rgba(142,45,226,0.6);
+  --red: #7b2cbf;
+  --red-hover: #9d4edd;
+  --glow: rgba(123,44,191,0.8);
+  --glow-strong: rgba(123,44,191,0.6);
 }
 
 body {
@@ -136,20 +134,13 @@ body {
   text-align: center;
 }
 
-.content strong {
-  color: var(--red);
-}
-
-.content .en {
-  font-size: 22px;
-  color: #bbb;
-}
+.content strong { color: var(--red); }
+.content .en { font-size: 22px; color: #bbb; }
 </style>
 </head>
 
 <body>
 
-<!-- INTEGRANTES -->
 <div class="members">
   <h2>Integrantes</h2>
   <span class="member">Ana — Vocal</span>
@@ -158,17 +149,14 @@ body {
   <span class="member" id="taigoBtn">Taigo — Bateria</span>
 </div>
 
-<!-- CONTEÚDO -->
 <div class="content">
 
-  <!-- LOGO -->
   <div class="band-block">
     <img src="Logobanda.png" alt="Economic Raped Logo" id="logoBtn">
     <div class="tagline" id="tagline">Metal Band</div>
     <div class="divider"></div>
   </div>
 
-  <!-- TEXTO -->
   <div id="textBlock"></div>
 
 </div>
@@ -182,42 +170,74 @@ const tagline = document.getElementById("tagline");
 
 let activePage = "band";
 
+/* ===== TEXTOS ===== */
 const bandText = `
 <p>
-  <strong>Economic Raped</strong> é uma banda de metal fundada em Santos/SP por
-  <strong>Allison</strong> e <strong>Taigo</strong>, com o objetivo de unir a
-  expressividade emocional do Emo à brutalidade e complexidade do
-  <strong>metal extremamente técnico</strong>.
+  <strong>Economic Raped</strong> é uma banda de metal fundada em
+  <strong>Santos/SP</strong> por <strong>Allison</strong> e <strong>Taigo</strong>,
+  nascida da necessidade de criar um ponto de encontro entre dois mundos que
+  raramente coexistem.
+  <br><br>
+  A banda propõe uma fusão entre a intensidade emocional do <strong>Emo</strong>
+  e a complexidade extrema do <strong>metal técnico</strong>, equilibrando
+  precisão, agressividade e sentimento em composições densas e elaboradas.
+  <br><br>
+  A formação atual conta com <strong>Ana</strong> (vocal),
+  <strong>Allison</strong> (guitarra),
+  <strong>Ciclano</strong> (baixo) e
+  <strong>Taigo</strong> (bateria).
 </p>
 
 <p class="en">
   <strong>Economic Raped</strong> is a metal band founded in Santos, Brazil, by
-  <strong>Allison</strong> and <strong>Taigo</strong>.
+  <strong>Allison</strong> and <strong>Taigo</strong>, built around the idea of
+  merging emo-driven emotion with the brutality and precision of
+  highly technical metal.
 </p>
 `;
 
 const allisonText = `
 <p>
   <strong>Allison</strong>, guitarrista da Economic Raped, é natural da capital de
-  São Paulo, com influências de <strong>Cacophony</strong>,
-  <strong>First Fragment</strong> e <strong>Necrophagist</strong>.
+  São Paulo e desenvolveu sua identidade musical a partir do
+  <strong>neoclassicismo</strong> e do <strong>death metal técnico</strong>.
+  <br><br>
+  Suas principais influências incluem <strong>Cacophony</strong>,
+  <strong>First Fragment</strong> e <strong>Necrophagist</strong>, refletidas em uma
+  abordagem que prioriza precisão extrema, complexidade harmônica e narrativa
+  musical dentro dos solos.
+  <br><br>
+  A criação da banda ao lado de <strong>Taigo</strong> surgiu da percepção de que
+  não existia um verdadeiro meio-termo entre a tecnicidade do metal extremo e a
+  expressividade emocional presente no Emo.
 </p>
 
 <p class="en">
-  <strong>Allison</strong> is a guitarist from SP, Brazil.
+  <strong>Allison</strong>, guitarist of Economic Raped, is from SP, Brazil.
+  His playing is shaped by neoclassical concepts and technical death metal,
+  combining precision, complexity and emotional intent.
 </p>
 `;
 
 const taigoText = `
 <p>
   <strong>Taigo</strong>, baterista da Economic Raped, é natural de
-  <strong>Santos/SP</strong>, influenciado por <strong>My Chemical Romance</strong>,
-  <strong>Pierce the Veil</strong>, <strong>MSI</strong> e o groove do
-  <strong>Pantera</strong>.
+  <strong>Santos/SP</strong> e constrói sua identidade rítmica a partir da fusão
+  entre emoção, groove e agressividade.
+  <br><br>
+  Suas influências passam por <strong>My Chemical Romance</strong>,
+  <strong>Pierce the Veil</strong>, <strong>MSI</strong> e pelo groove pesado e
+  arrastado do <strong>Pantera</strong>, resultando em uma bateria que alterna
+  entre intensidade emocional e peso rítmico.
+  <br><br>
+  Junto de <strong>Allison</strong>, Taigo idealizou a banda como uma ponte entre
+  a expressividade do Emo e a sofisticação técnica do metal extremo.
 </p>
 
 <p class="en">
-  <strong>Taigo</strong> is a drummer from SP, Brazil.
+  <strong>Taigo</strong>, drummer of Economic Raped, is from SP, Brazil.
+  His style blends emo-driven emotion with heavy groove influences,
+  particularly inspired by Pantera.
 </p>
 `;
 
@@ -232,7 +252,6 @@ function resetState() {
 
 textBlock.innerHTML = bandText;
 
-/* ===== BOTÕES ===== */
 allisonBtn.onclick = () => {
   if (activePage === "allison") return resetState();
   resetState();
@@ -253,7 +272,6 @@ taigoBtn.onclick = () => {
   activePage = "taigo";
 };
 
-/* ===== LOGO VOLTA PRA HOME ===== */
 logoBtn.onclick = resetState;
 </script>
 
