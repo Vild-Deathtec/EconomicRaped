@@ -250,17 +250,15 @@ body {
     drop-shadow(0 0 30px var(--red));
 }
 
-/* ===== RESPONSIVO PARA CELULAR ===== */
-@media (max-width: 768px) {
-  .members {
-    position: static;
-    transform: none;
-    margin: 20px 0;
-    font-size: 26px;
-    max-height: 300px;
-    overflow-y: auto;
-    text-align: center;
-  }
+/* ================= ESTILO CELULAR ================= */
+body.mobile .members {
+  position: static;
+  transform: none;
+  margin: 20px 0;
+  font-size: 26px;
+  max-height: 300px;
+  overflow-y: auto;
+  text-align: center;
 }
 </style>
 </head>
@@ -323,7 +321,14 @@ const tagline = document.getElementById("tagline");
 const logoBtn = document.getElementById("logoBtn");
 const discographyBtn = document.getElementById("discographyBtn");
 const discographyBlock = document.getElementById("discographyBlock");
+const members = document.querySelector(".members");
 
+// ===== DETECÇÃO CELULAR =====
+if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+  document.body.classList.add("mobile");
+}
+
+// ===== TEXTOS =====
 const bandText = `
 <p>
  <strong>Economic Raped</strong> é uma banda de metal fundada em Santos/SP por
@@ -424,7 +429,7 @@ textBlock.innerHTML = bandText;
 
 // ===== EVENTOS =====
 allisonBtn.onclick = () => {
-  document.body.className = "allison";
+  document.body.className = "allison" + (document.body.classList.contains("mobile") ? " mobile" : "");
   allisonBtn.classList.add("active");
   taigoBtn.classList.remove("active");
   tagline.textContent = "Guitarra";
@@ -434,7 +439,7 @@ allisonBtn.onclick = () => {
 };
 
 taigoBtn.onclick = () => {
-  document.body.className = "taigo";
+  document.body.className = "taigo" + (document.body.classList.contains("mobile") ? " mobile" : "");
   taigoBtn.classList.add("active");
   allisonBtn.classList.remove("active");
   tagline.textContent = "Bateria";
@@ -444,7 +449,7 @@ taigoBtn.onclick = () => {
 };
 
 logoBtn.onclick = () => {
-  document.body.className = "";
+  document.body.className = "" + (document.body.classList.contains("mobile") ? " mobile" : "");
   allisonBtn.classList.remove("active");
   taigoBtn.classList.remove("active");
   tagline.textContent = "Metal Band";
@@ -456,8 +461,8 @@ logoBtn.onclick = () => {
 discographyBtn.onclick = () => {
   textBlock.style.display = "none";
   discographyBlock.style.display = "block";
-
-  // remover o active dos integrantes quando abre a discografia
+  
+  // Permitir que os membros sejam clicáveis novamente
   allisonBtn.classList.remove("active");
   taigoBtn.classList.remove("active");
 };
