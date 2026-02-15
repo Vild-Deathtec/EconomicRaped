@@ -17,6 +17,7 @@
   --red: #e63946;
   --red-hover: #ff4d5a;
   --text: #eaeaea;
+  --highlight: var(--red);
 }
 
 /* ===== MODO ALLISON ===== */
@@ -24,6 +25,7 @@ body.allison {
   --bg: #080000;
   --red: #8b0000;
   --red-hover: #8b0000;
+  --highlight: var(--red);
 }
 
 /* ===== MODO TAIGO ===== */
@@ -31,6 +33,7 @@ body.taigo {
   --bg: #0b0012;
   --red: #7a1fa2;
   --red-hover: #7a1fa2;
+  --highlight: var(--red);
 }
 
 body {
@@ -84,13 +87,13 @@ body {
   margin: 0 auto;
   padding-top: 24px;
   padding-bottom: 300px;
+  text-align: center;
 }
 
 /* ================= LOGO ================= */
 .band-block {
-  text-align: center;
-  margin-bottom: 200px;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .band-block img {
@@ -99,8 +102,8 @@ body {
   display: block;
   margin: 0 auto;
   filter:
-    drop-shadow(0 0 10px var(--red))
-    drop-shadow(0 0 30px var(--red));
+    drop-shadow(0 0 10px var(--highlight))
+    drop-shadow(0 0 30px var(--highlight));
   transition: filter 0.6s ease;
 }
 
@@ -108,15 +111,67 @@ body {
   margin-top: 14px;
   font-size: 14px;
   letter-spacing: 5px;
-  color: var(--red);
+  color: var(--highlight);
   text-transform: uppercase;
 }
 
 .divider {
   width: 200px;
   height: 2px;
-  background: var(--red);
+  background: var(--highlight);
   margin: 16px auto 0;
+}
+
+/* ================= BOTÃO DISCROGRAFIA ================= */
+.band-actions {
+  text-align: center;
+  margin: 20px 0 40px;
+}
+
+#discographyBtn {
+  background: none;
+  border: 2px solid var(--highlight);
+  color: var(--highlight);
+  padding: 8px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#discographyBtn:hover {
+  background: var(--highlight);
+  color: var(--bg);
+}
+
+/* ================= DISCROGRAFIA ================= */
+#discography {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.albums {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.album-cover {
+  width: 160px;
+  max-width: 80vw;
+  filter:
+    drop-shadow(0 0 10px var(--highlight))
+    drop-shadow(0 0 30px var(--highlight));
+  transition: filter 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.album-cover:hover {
+  transform: scale(1.1);
+  filter:
+    drop-shadow(0 0 15px var(--highlight))
+    drop-shadow(0 0 40px var(--highlight));
 }
 
 /* ================= TEXTO ================= */
@@ -124,11 +179,10 @@ body {
   font-size: 26px;
   line-height: 1.6;
   margin-bottom: 90px;
-  text-align: center;
 }
 
 .content strong {
-  color: var(--red);
+  color: var(--highlight);
 }
 
 .content .en {
@@ -142,7 +196,7 @@ body {
   right: 20px;
   bottom: 20px;
   background: rgba(0,0,0,0.85);
-  border: 1px solid var(--red);
+  border: 1px solid var(--highlight);
   padding: 14px 18px;
   width: 280px;
   font-size: 14px;
@@ -152,7 +206,7 @@ body {
 
 .now-playing span {
   display: block;
-  color: var(--red);
+  color: var(--highlight);
   font-size: 11px;
   margin-bottom: 6px;
   text-transform: uppercase;
@@ -169,12 +223,12 @@ body {
   padding: 40px 20px;
   color: var(--text);
   font-size: 18px;
-  background: #111; /* fundo escuro */
-  margin-top: 50px; /* separa do conteúdo */
+  background: #111;
+  margin-top: 50px;
 }
 
 .footer a {
-  color: var(--red);
+  color: var(--highlight);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -183,34 +237,22 @@ body {
   color: var(--red-hover);
 }
 
-/* ===== INSTAGRAM ICON COM GLOW ===== */
-.instagram-link {
-  display: inline-block;
+.footer img {
+  width: 40px;
+  height: 40px;
   margin-top: 10px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: var(--red);
-  padding: 5px;
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.instagram-link img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  display: block;
   filter:
-    drop-shadow(0 0 10px var(--red))
-    drop-shadow(0 0 30px var(--red));
+    drop-shadow(0 0 10px var(--highlight))
+    drop-shadow(0 0 30px var(--highlight));
   transition: filter 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
 }
 
-.instagram-link:hover img {
-  filter:
-    drop-shadow(0 0 15px var(--red-hover))
-    drop-shadow(0 0 40px var(--red-hover));
+.footer img:hover {
   transform: scale(1.1);
+  filter:
+    drop-shadow(0 0 15px var(--highlight))
+    drop-shadow(0 0 40px var(--highlight));
 }
 </style>
 </head>
@@ -236,8 +278,23 @@ body {
     <div class="divider"></div>
   </div>
 
+  <!-- BOTÃO DISCROGRAFIA -->
+  <div class="band-actions">
+    <button id="discographyBtn">Discografia</button>
+  </div>
+
   <!-- TEXTO -->
   <div id="textBlock"></div>
+
+  <!-- DISCROGRAFIA -->
+  <div id="discography">
+    <h2>Discografia</h2>
+    <div class="albums">
+      <a href="https://www.spotify.com/" target="_blank">
+        <img src="CapaAlbum.jpg" class="album-cover" alt="EP 1">
+      </a>
+    </div>
+  </div>
 
 </div>
 
@@ -250,8 +307,8 @@ body {
 <!-- RODAPÉ COM EMAIL E INSTAGRAM -->
 <footer class="footer">
   <p>Contato: <a href="mailto:EconomicRapedband@gmail.com">EconomicRapedband@gmail.com</a></p>
-  <a href="https://www.instagram.com/economicraped/" target="_blank" class="instagram-link">
-    <img src="Instagramicon.png" alt="Instagram Economic Raped">
+  <a href="https://www.instagram.com/economicraped/" target="_blank">
+    <img src="Instagramicon.png" alt="Instagram">
   </a>
 </footer>
 
@@ -261,6 +318,8 @@ const taigoBtn = document.getElementById("taigoBtn");
 const textBlock = document.getElementById("textBlock");
 const tagline = document.getElementById("tagline");
 const logoBtn = document.getElementById("logoBtn");
+const discographyBtn = document.getElementById("discographyBtn");
+const discographyDiv = document.getElementById("discography");
 
 let mode = "band";
 
@@ -359,10 +418,32 @@ const taigoText = `
   Pantera.
 </p>
 `;
-  
+
 textBlock.innerHTML = bandText;
 
+// BOTÃO DISCROGRAFIA
+discographyBtn.onclick = () => {
+  textBlock.style.display = "none";
+  logoBtn.style.display = "none";
+  discographyDiv.style.display = "block";
+};
+
+// LOGO VOLTAR AO NORMAL
+logoBtn.onclick = () => {
+  discographyDiv.style.display = "none";
+  textBlock.style.display = "block";
+  logoBtn.style.display = "block";
+  document.body.className = "";
+  allisonBtn.classList.remove("active");
+  taigoBtn.classList.remove("active");
+  tagline.textContent = "Metal Band";
+  textBlock.innerHTML = bandText;
+};
+
+// ALLISON
 allisonBtn.onclick = () => {
+  discographyDiv.style.display = "none";
+  textBlock.style.display = "block";
   document.body.className = "allison";
   allisonBtn.classList.add("active");
   taigoBtn.classList.remove("active");
@@ -370,20 +451,15 @@ allisonBtn.onclick = () => {
   textBlock.innerHTML = allisonText;
 };
 
+// TAIGO
 taigoBtn.onclick = () => {
+  discographyDiv.style.display = "none";
+  textBlock.style.display = "block";
   document.body.className = "taigo";
   taigoBtn.classList.add("active");
   allisonBtn.classList.remove("active");
   tagline.textContent = "Bateria";
   textBlock.innerHTML = taigoText;
-};
-
-logoBtn.onclick = () => {
-  document.body.className = "";
-  allisonBtn.classList.remove("active");
-  taigoBtn.classList.remove("active");
-  tagline.textContent = "Metal Band";
-  textBlock.innerHTML = bandText;
 };
 </script>
 
