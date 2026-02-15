@@ -249,6 +249,19 @@ body {
     drop-shadow(0 0 15px var(--red))
     drop-shadow(0 0 30px var(--red));
 }
+
+/* ===== RESPONSIVO PARA CELULAR ===== */
+@media (max-width: 768px) {
+  .members {
+    position: static;
+    transform: none;
+    margin: 20px 0;
+    font-size: 26px;
+    max-height: 300px;
+    overflow-y: auto;
+    text-align: center;
+  }
+}
 </style>
 </head>
 
@@ -441,13 +454,12 @@ logoBtn.onclick = () => {
 };
 
 discographyBtn.onclick = () => {
-  // Remove "active" dos integrantes para que não fiquem inchados e não clicáveis
-  allisonBtn.classList.remove("active");
-  taigoBtn.classList.remove("active");
-
-  // Oculta o texto e mostra a discografia
   textBlock.style.display = "none";
   discographyBlock.style.display = "block";
+
+  // remover o active dos integrantes quando abre a discografia
+  allisonBtn.classList.remove("active");
+  taigoBtn.classList.remove("active");
 };
 </script>
 
