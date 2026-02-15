@@ -9,12 +9,27 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #0d0d0d;
+  --red: #e63946;
+  --red-hover: #ff4d5a;
+  --text: #eaeaea;
+}
+
+/* ===== MODO ALLISON (VERMELHO SANGUE) ===== */
+body.allison {
+  --bg: #080000;
+  --red: #8b0000;
+  --red-hover: #b30000;
+}
+
 body {
   margin: 0;
-  background: #0d0d0d;
-  color: #eaeaea;
+  background: var(--bg);
+  color: var(--text);
   font-family: Arial, sans-serif;
   overflow-x: hidden;
+  transition: background 0.8s ease;
 }
 
 /* ================= INTEGRANTES (FIXOS) ================= */
@@ -37,13 +52,14 @@ body {
 
 .member {
   display: block;
-  color: #e63946; /* VERMELHO */
+  color: var(--red);
+  cursor: pointer;
   transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .member:hover {
-  transform: scale(1.25); /* AUMENTA MAIS */
-  color: #ff4d5a;
+  transform: scale(1.25);
+  color: var(--red-hover);
 }
 
 /* ================= CONTEÚDO ================= */
@@ -61,30 +77,30 @@ body {
 }
 
 .band-block img {
-  width: 420px; /* LOGO MAIOR */
+  width: 420px;
   max-width: 92vw;
   display: block;
   margin: 0 auto;
-
-  /* CONTORNO / BRILHO VERMELHO */
   filter:
-    drop-shadow(0 0 10px rgba(230,57,70,0.8))
-    drop-shadow(0 0 30px rgba(230,57,70,0.6));
+    drop-shadow(0 0 10px rgba(139,0,0,0.8))
+    drop-shadow(0 0 30px rgba(139,0,0,0.6));
 }
 
 .tagline {
   margin-top: 14px;
   font-size: 14px;
   letter-spacing: 5px;
-  color: #e63946;
+  color: var(--red);
   text-transform: uppercase;
+  transition: color 0.6s ease;
 }
 
 .divider {
   width: 200px;
   height: 2px;
-  background: #e63946;
+  background: var(--red);
   margin: 16px auto 0;
+  transition: background 0.6s ease;
 }
 
 /* ================= TEXTO ================= */
@@ -96,7 +112,7 @@ body {
 }
 
 .content strong {
-  color: #e63946;
+  color: var(--red);
 }
 
 .content .en {
@@ -112,7 +128,7 @@ body {
 <div class="members">
   <h2>Integrantes</h2>
   <span class="member">Ana — Vocal</span>
-  <span class="member">Allison — Guitarra</span>
+  <span class="member" id="allisonBtn">Allison — Guitarra</span>
   <span class="member">Ciclano — Baixo</span>
   <span class="member">Taigo — Bateria</span>
 </div>
@@ -127,38 +143,72 @@ body {
     <div class="divider"></div>
   </div>
 
-  <!-- TEXTO PT -->
-  <p>
-    <strong>Economic Raped</strong> é uma banda de metal fundada em Santos/SP por
-    <strong>Allison</strong> e <strong>Taigo</strong>, com o objetivo de unir a
-    expressividade emocional do Emo à brutalidade e complexidade do
-    <strong>metal extremamente técnico</strong>.
-    <br><br>
-    A banda constrói sua identidade através do contraste entre sentimento e precisão,
-    entregando composições intensas, densas e altamente elaboradas.
-    <br><br>
-    A formação atual conta com <strong>Ana</strong> (vocal),
-    <strong>Allison</strong> (guitarra),
-    <strong>Ciclano</strong> (baixo) e
-    <strong>Taigo</strong> (bateria).
-  </p>
+  <!-- TEXTO (DINÂMICO) -->
+  <div id="textBlock">
 
-  <!-- TEXTO EN -->
-  <p class="en">
-    <strong>Economic Raped</strong> is a metal band founded in Santos, Brazil, by
-    <strong>Allison</strong> and <strong>Taigo</strong>, blending emo-driven emotion
-    with the brutality and complexity of highly technical metal.
-    <br><br>
-    The band’s identity is shaped by the contrast between raw emotion and precision,
-    delivering intense and meticulously crafted compositions.
-    <br><br>
-    The lineup features <strong>Ana</strong> (vocals),
-    <strong>Allison</strong> (guitar),
-    <strong>Ciclano</strong> (bass), and
-    <strong>Taigo</strong> (drums).
-  </p>
+    <p>
+      <strong>Economic Raped</strong> é uma banda de metal fundada em Santos/SP por
+      <strong>Allison</strong> e <strong>Taigo</strong>, com o objetivo de unir a
+      expressividade emocional do Emo à brutalidade e complexidade do
+      <strong>metal extremamente técnico</strong>.
+      <br><br>
+      A banda constrói sua identidade através do contraste entre sentimento e precisão,
+      entregando composições intensas, densas e altamente elaboradas.
+      <br><br>
+      A formação atual conta com <strong>Ana</strong> (vocal),
+      <strong>Allison</strong> (guitarra),
+      <strong>Ciclano</strong> (baixo) e
+      <strong>Taigo</strong> (bateria).
+    </p>
+
+    <p class="en">
+      <strong>Economic Raped</strong> is a metal band founded in Santos, Brazil, by
+      <strong>Allison</strong> and <strong>Taigo</strong>, blending emo-driven emotion
+      with the brutality and complexity of highly technical metal.
+      <br><br>
+      The band’s identity is shaped by the contrast between raw emotion and precision,
+      delivering intense and meticulously crafted compositions.
+      <br><br>
+      The lineup features <strong>Ana</strong> (vocals),
+      <strong>Allison</strong> (guitar),
+      <strong>Ciclano</strong> (bass), and
+      <strong>Taigo</strong> (drums).
+    </p>
+
+  </div>
 
 </div>
+
+<script>
+const allisonBtn = document.getElementById("allisonBtn");
+const textBlock = document.getElementById("textBlock");
+
+allisonBtn.addEventListener("click", () => {
+  document.body.classList.add("allison");
+
+  textBlock.innerHTML = `
+    <p>
+      <strong>Allison</strong>, guitarrista da Economic Raped, é natural da capital de
+      São Paulo e desenvolveu sua identidade musical entre o
+      <strong>neoclassicismo</strong> e o <strong>death metal técnico</strong>.
+      <br><br>
+      A criação da banda surgiu da necessidade de um ponto de equilíbrio entre
+      tecnicidade extrema e expressão emocional, unindo a sofisticação harmônica
+      do neoclassicismo e do death metal técnico à carga emocional do Emo.
+    </p>
+
+    <p class="en">
+      <strong>Allison</strong>, guitarist of Economic Raped, is from SP, Brazil, and
+      developed his musical identity through neoclassical influences and
+      technical death metal.
+      <br><br>
+      The band was formed from the need to create a balance between extreme
+      technicality and emotional expression, merging neoclassical and technical
+      death metal precision with emo-driven intensity.
+    </p>
+  `;
+});
+</script>
 
 </body>
 </html>
