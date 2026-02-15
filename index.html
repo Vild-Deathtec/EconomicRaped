@@ -4,34 +4,33 @@
 <meta charset="UTF-8">
 <title>Economic Raped</title>
 
+<!-- FAVICON (MESMA LOGO) -->
+<link rel="icon" type="image/png" href="Logobanda.png">
+
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 :root {
   --bg: #0d0d0d;
   --red: #e63946;
   --red-hover: #ff4d5a;
   --text: #eaeaea;
-  --glow: rgba(230,57,70,0.8);
-  --glow-strong: rgba(230,57,70,0.6);
 }
 
-/* ===== ALLISON ===== */
+/* ===== MODO ALLISON ===== */
 body.allison {
   --bg: #080000;
   --red: #8b0000;
   --red-hover: #8b0000;
-  --glow: rgba(139,0,0,0.8);
-  --glow-strong: rgba(139,0,0,0.6);
 }
 
-/* ===== TAIGO ===== */
+/* ===== MODO TAIGO ===== */
 body.taigo {
-  --bg: #0a0014;
-  --red: #7b2cbf;
-  --red-hover: #9d4edd;
-  --glow: rgba(123,44,191,0.8);
-  --glow-strong: rgba(123,44,191,0.6);
+  --bg: #0b0012;
+  --red: #7a1fa2;
+  --red-hover: #7a1fa2;
 }
 
 body {
@@ -91,6 +90,7 @@ body {
 .band-block {
   text-align: center;
   margin-bottom: 200px;
+  cursor: pointer;
 }
 
 .band-block img {
@@ -98,15 +98,10 @@ body {
   max-width: 92vw;
   display: block;
   margin: 0 auto;
-  cursor: pointer;
-  transition: filter 0.8s ease, transform 0.25s ease;
   filter:
-    drop-shadow(0 0 10px var(--glow))
-    drop-shadow(0 0 30px var(--glow-strong));
-}
-
-.band-block img:hover {
-  transform: scale(1.05);
+    drop-shadow(0 0 10px var(--red))
+    drop-shadow(0 0 30px var(--red));
+  transition: filter 0.6s ease;
 }
 
 .tagline {
@@ -115,7 +110,6 @@ body {
   letter-spacing: 5px;
   color: var(--red);
   text-transform: uppercase;
-  transition: color 0.6s ease;
 }
 
 .divider {
@@ -123,7 +117,6 @@ body {
   height: 2px;
   background: var(--red);
   margin: 16px auto 0;
-  transition: background 0.6s ease;
 }
 
 /* ================= TEXTO ================= */
@@ -134,13 +127,47 @@ body {
   text-align: center;
 }
 
-.content strong { color: var(--red); }
-.content .en { font-size: 22px; color: #bbb; }
+.content strong {
+  color: var(--red);
+}
+
+.content .en {
+  font-size: 22px;
+  color: #bbb;
+}
+
+/* ================= PLAYER VISUAL ================= */
+.now-playing {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: rgba(0,0,0,0.85);
+  border: 1px solid var(--red);
+  padding: 14px 18px;
+  width: 280px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  z-index: 999;
+}
+
+.now-playing span {
+  display: block;
+  color: var(--red);
+  font-size: 11px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.now-playing strong {
+  color: #fff;
+  font-weight: normal;
+}
 </style>
 </head>
 
 <body>
 
+<!-- INTEGRANTES -->
 <div class="members">
   <h2>Integrantes</h2>
   <span class="member">Ana — Vocal</span>
@@ -149,130 +176,92 @@ body {
   <span class="member" id="taigoBtn">Taigo — Bateria</span>
 </div>
 
+<!-- CONTEÚDO -->
 <div class="content">
 
-  <div class="band-block">
-    <img src="Logobanda.png" alt="Economic Raped Logo" id="logoBtn">
+  <!-- LOGO -->
+  <div class="band-block" id="logoBtn">
+    <img src="Logobanda.png" alt="Economic Raped Logo">
     <div class="tagline" id="tagline">Metal Band</div>
     <div class="divider"></div>
   </div>
 
+  <!-- TEXTO -->
   <div id="textBlock"></div>
 
+</div>
+
+<!-- PLAYER VISUAL -->
+<div class="now-playing">
+  <span>Tocando agora</span>
+  <strong>Giles Corey — No One Is Ever Going to Want Me</strong>
 </div>
 
 <script>
 const allisonBtn = document.getElementById("allisonBtn");
 const taigoBtn = document.getElementById("taigoBtn");
-const logoBtn = document.getElementById("logoBtn");
 const textBlock = document.getElementById("textBlock");
 const tagline = document.getElementById("tagline");
+const logoBtn = document.getElementById("logoBtn");
 
-let activePage = "band";
+let mode = "band";
 
-/* ===== TEXTOS ===== */
 const bandText = `
 <p>
-  <strong>Economic Raped</strong> é uma banda de metal fundada em
-  <strong>Santos/SP</strong> por <strong>Allison</strong> e <strong>Taigo</strong>,
-  nascida da necessidade de criar um ponto de encontro entre dois mundos que
-  raramente coexistem.
-  <br><br>
-  A banda propõe uma fusão entre a intensidade emocional do <strong>Emo</strong>
-  e a complexidade extrema do <strong>metal técnico</strong>, equilibrando
-  precisão, agressividade e sentimento em composições densas e elaboradas.
-  <br><br>
-  A formação atual conta com <strong>Ana</strong> (vocal),
-  <strong>Allison</strong> (guitarra),
-  <strong>Ciclano</strong> (baixo) e
-  <strong>Taigo</strong> (bateria).
-</p>
-
-<p class="en">
-  <strong>Economic Raped</strong> is a metal band founded in Santos, Brazil, by
-  <strong>Allison</strong> and <strong>Taigo</strong>, built around the idea of
-  merging emo-driven emotion with the brutality and precision of
-  highly technical metal.
+  <strong>Economic Raped</strong> é uma banda de metal fundada em Santos/SP por
+  <strong>Allison</strong> e <strong>Taigo</strong>, criada para unir a
+  expressividade emocional do Emo à brutalidade e complexidade do
+  <strong>metal extremamente técnico</strong>.
 </p>
 `;
 
 const allisonText = `
 <p>
-  <strong>Allison</strong>, guitarrista da Economic Raped, é natural da capital de
-  São Paulo e desenvolveu sua identidade musical a partir do
-  <strong>neoclassicismo</strong> e do <strong>death metal técnico</strong>.
-  <br><br>
-  Suas principais influências incluem <strong>Cacophony</strong>,
-  <strong>First Fragment</strong> e <strong>Necrophagist</strong>, refletidas em uma
-  abordagem que prioriza precisão extrema, complexidade harmônica e narrativa
-  musical dentro dos solos.
-  <br><br>
-  A criação da banda ao lado de <strong>Taigo</strong> surgiu da percepção de que
-  não existia um verdadeiro meio-termo entre a tecnicidade do metal extremo e a
-  expressividade emocional presente no Emo.
-</p>
-
-<p class="en">
-  <strong>Allison</strong>, guitarist of Economic Raped, is from SP, Brazil.
-  His playing is shaped by neoclassical concepts and technical death metal,
-  combining precision, complexity and emotional intent.
+  <strong>Allison</strong> é guitarrista da banda, natural da capital de São Paulo.
+  Sua identidade musical se construiu entre o <strong>neoclassicismo</strong> e o
+  <strong>death metal técnico</strong>, com influências de
+  <strong>Cacophony</strong>, <strong>First Fragment</strong> e
+  <strong>Necrophagist</strong>.
 </p>
 `;
 
 const taigoText = `
 <p>
-  <strong>Taigo</strong>, baterista da Economic Raped, é natural de
-  <strong>Santos/SP</strong> e constrói sua identidade rítmica a partir da fusão
-  entre emoção, groove e agressividade.
+  <strong>Taigo</strong>, baterista da Economic Raped, é natural de Santos/SP.
+  Suas influências passam pelo Emo de <strong>My Chemical Romance</strong> e
+  <strong>Pierce The Veil</strong>, a energia crua do <strong>MSI</strong> e o
+  <strong>groove pesado do Pantera</strong>.
   <br><br>
-  Suas influências passam por <strong>My Chemical Romance</strong>,
-  <strong>Pierce the Veil</strong>, <strong>MSI</strong> e pelo groove pesado e
-  arrastado do <strong>Pantera</strong>, resultando em uma bateria que alterna
-  entre intensidade emocional e peso rítmico.
-  <br><br>
-  Junto de <strong>Allison</strong>, Taigo idealizou a banda como uma ponte entre
-  a expressividade do Emo e a sofisticação técnica do metal extremo.
-</p>
-
-<p class="en">
-  <strong>Taigo</strong>, drummer of Economic Raped, is from SP, Brazil.
-  His style blends emo-driven emotion with heavy groove influences,
-  particularly inspired by Pantera.
+  A banda nasceu da visão conjunta de Taigo e Allison em criar uma ponte entre
+  técnica extrema, groove e emoção.
 </p>
 `;
-
-function resetState() {
-  document.body.classList.remove("allison", "taigo");
-  allisonBtn.classList.remove("active");
-  taigoBtn.classList.remove("active");
-  tagline.textContent = "Metal Band";
-  textBlock.innerHTML = bandText;
-  activePage = "band";
-}
 
 textBlock.innerHTML = bandText;
 
 allisonBtn.onclick = () => {
-  if (activePage === "allison") return resetState();
-  resetState();
-  document.body.classList.add("allison");
+  document.body.className = "allison";
   allisonBtn.classList.add("active");
+  taigoBtn.classList.remove("active");
   tagline.textContent = "Guitarrista";
   textBlock.innerHTML = allisonText;
-  activePage = "allison";
 };
 
 taigoBtn.onclick = () => {
-  if (activePage === "taigo") return resetState();
-  resetState();
-  document.body.classList.add("taigo");
+  document.body.className = "taigo";
   taigoBtn.classList.add("active");
+  allisonBtn.classList.remove("active");
   tagline.textContent = "Baterista";
   textBlock.innerHTML = taigoText;
-  activePage = "taigo";
 };
 
-logoBtn.onclick = resetState;
+logoBtn.onclick = () => {
+  document.body.className = "";
+  allisonBtn.classList.remove("active");
+  taigoBtn.classList.remove("active");
+  tagline.textContent = "Metal Band";
+  textBlock.innerHTML = bandText;
+};
 </script>
 
 </body>
