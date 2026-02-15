@@ -444,17 +444,20 @@ logoBtn.onclick = () => {
 discographyBtn.onclick = () => {
   textBlock.style.display = "none";
   discographyBlock.style.display = "block";
+
+  // remove active/scale dos membros durante discografia
+  allisonBtn.classList.remove("active");
+  taigoBtn.classList.remove("active");
 };
 
-// ===== MUDANÇA PARA CELULAR =====
+// ===== AJUSTE MOBILE =====
 if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
   document.body.classList.add("mobile");
 
-  // move .members para depois do conteúdo
+  // move membros para final do conteúdo
   const content = document.querySelector(".content");
   content.parentNode.insertBefore(members, content.nextSibling);
 
-  // aplica estilo de celular
   members.style.position = "static";
   members.style.transform = "none";
   members.style.margin = "20px auto";
@@ -462,6 +465,10 @@ if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
   members.style.maxHeight = "300px";
   members.style.overflowY = "auto";
   members.style.textAlign = "center";
+
+  document.querySelectorAll(".member").forEach(member => {
+    member.style.display = "block";
+  });
 }
 </script>
 
