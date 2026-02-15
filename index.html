@@ -16,11 +16,11 @@
   --text: #eaeaea;
 }
 
-/* ===== MODO ALLISON (VERMELHO SANGUE) ===== */
+/* ===== MODO ALLISON ===== */
 body.allison {
   --bg: #080000;
   --red: #8b0000;
-  --red-hover: #b30000;
+  --red-hover: #8b0000;
 }
 
 body {
@@ -32,7 +32,7 @@ body {
   transition: background 0.8s ease;
 }
 
-/* ================= INTEGRANTES (FIXOS) ================= */
+/* ================= INTEGRANTES ================= */
 .members {
   position: fixed;
   left: 60px;
@@ -62,6 +62,13 @@ body {
   color: var(--red-hover);
 }
 
+/* ===== ALLISON ATIVO ===== */
+.member.active {
+  transform: scale(1.35);
+  color: var(--red);
+  pointer-events: none;
+}
+
 /* ================= CONTEÚDO ================= */
 .content {
   max-width: 900px;
@@ -70,7 +77,7 @@ body {
   padding-bottom: 300px;
 }
 
-/* ================= BLOCO DA LOGO ================= */
+/* ================= LOGO ================= */
 .band-block {
   text-align: center;
   margin-bottom: 200px;
@@ -139,74 +146,75 @@ body {
   <!-- LOGO -->
   <div class="band-block">
     <img src="Logobanda.png" alt="Economic Raped Logo">
-    <div class="tagline">Metal Band</div>
+    <div class="tagline" id="tagline">Metal Band</div>
     <div class="divider"></div>
   </div>
 
-  <!-- TEXTO (DINÂMICO) -->
-  <div id="textBlock">
-
-    <p>
-      <strong>Economic Raped</strong> é uma banda de metal fundada em Santos/SP por
-      <strong>Allison</strong> e <strong>Taigo</strong>, com o objetivo de unir a
-      expressividade emocional do Emo à brutalidade e complexidade do
-      <strong>metal extremamente técnico</strong>.
-      <br><br>
-      A banda constrói sua identidade através do contraste entre sentimento e precisão,
-      entregando composições intensas, densas e altamente elaboradas.
-      <br><br>
-      A formação atual conta com <strong>Ana</strong> (vocal),
-      <strong>Allison</strong> (guitarra),
-      <strong>Ciclano</strong> (baixo) e
-      <strong>Taigo</strong> (bateria).
-    </p>
-
-    <p class="en">
-      <strong>Economic Raped</strong> is a metal band founded in Santos, Brazil, by
-      <strong>Allison</strong> and <strong>Taigo</strong>, blending emo-driven emotion
-      with the brutality and complexity of highly technical metal.
-      <br><br>
-      The band’s identity is shaped by the contrast between raw emotion and precision,
-      delivering intense and meticulously crafted compositions.
-      <br><br>
-      The lineup features <strong>Ana</strong> (vocals),
-      <strong>Allison</strong> (guitar),
-      <strong>Ciclano</strong> (bass), and
-      <strong>Taigo</strong> (drums).
-    </p>
-
-  </div>
+  <!-- TEXTO -->
+  <div id="textBlock"></div>
 
 </div>
 
 <script>
 const allisonBtn = document.getElementById("allisonBtn");
 const textBlock = document.getElementById("textBlock");
+const tagline = document.getElementById("tagline");
+
+let allisonActive = false;
+
+const bandText = `
+<p>
+  <strong>Economic Raped</strong> é uma banda de metal fundada em Santos/SP por
+  <strong>Allison</strong> e <strong>Taigo</strong>, com o objetivo de unir a
+  expressividade emocional do Emo à brutalidade e complexidade do
+  <strong>metal extremamente técnico</strong>.
+  <br><br>
+  A formação atual conta com <strong>Ana</strong> (vocal),
+  <strong>Allison</strong> (guitarra),
+  <strong>Ciclano</strong> (baixo) e
+  <strong>Taigo</strong> (bateria).
+</p>
+
+<p class="en">
+  <strong>Economic Raped</strong> is a metal band founded in Santos, Brazil, by
+  <strong>Allison</strong> and <strong>Taigo</strong>, blending emo-driven emotion
+  with highly technical metal.
+</p>
+`;
+
+const allisonText = `
+<p>
+  <strong>Allison</strong>, guitarrista da Economic Raped, é natural da capital de
+  São Paulo e construiu sua identidade musical entre o
+  <strong>neoclassicismo</strong> e o <strong>death metal técnico</strong>.
+  <br><br>
+  A banda surgiu da necessidade de unir tecnicidade extrema e expressão emocional,
+  conectando a sofisticação do metal técnico à intensidade do Emo.
+</p>
+
+<p class="en">
+  <strong>Allison</strong>, guitarist of Economic Raped, is from SP, Brazil, and
+  developed his style through neoclassical influences and technical death metal,
+  blending precision with emotional intensity.
+</p>
+`;
+
+textBlock.innerHTML = bandText;
 
 allisonBtn.addEventListener("click", () => {
-  document.body.classList.add("allison");
+  allisonActive = !allisonActive;
 
-  textBlock.innerHTML = `
-    <p>
-      <strong>Allison</strong>, guitarrista da Economic Raped, é natural da capital de
-      São Paulo e desenvolveu sua identidade musical entre o
-      <strong>neoclassicismo</strong> e o <strong>death metal técnico</strong>.
-      <br><br>
-      A criação da banda surgiu da necessidade de um ponto de equilíbrio entre
-      tecnicidade extrema e expressão emocional, unindo a sofisticação harmônica
-      do neoclassicismo e do death metal técnico à carga emocional do Emo.
-    </p>
-
-    <p class="en">
-      <strong>Allison</strong>, guitarist of Economic Raped, is from SP, Brazil, and
-      developed his musical identity through neoclassical influences and
-      technical death metal.
-      <br><br>
-      The band was formed from the need to create a balance between extreme
-      technicality and emotional expression, merging neoclassical and technical
-      death metal precision with emo-driven intensity.
-    </p>
-  `;
+  if (allisonActive) {
+    document.body.classList.add("allison");
+    allisonBtn.classList.add("active");
+    tagline.textContent = "Guitarrista";
+    textBlock.innerHTML = allisonText;
+  } else {
+    document.body.classList.remove("allison");
+    allisonBtn.classList.remove("active");
+    tagline.textContent = "Metal Band";
+    textBlock.innerHTML = bandText;
+  }
 });
 </script>
 
