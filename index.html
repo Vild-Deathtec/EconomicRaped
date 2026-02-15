@@ -16,6 +16,7 @@
   --bg: #0d0d0d;
   --red: #e63946;
   --red-hover: #ff4d5a;
+  --purple: #7a1fa2;
   --text: #eaeaea;
 }
 
@@ -89,8 +90,10 @@ body {
 /* ================= LOGO ================= */
 .band-block {
   text-align: center;
-  margin-bottom: 200px;
+  margin-bottom: 20px;
   cursor: pointer;
+  position: relative;
+  z-index: 5;
 }
 
 .band-block img {
@@ -102,6 +105,12 @@ body {
     drop-shadow(0 0 10px var(--red))
     drop-shadow(0 0 30px var(--red));
   transition: filter 0.6s ease;
+}
+
+.band-block:hover img {
+  filter:
+    drop-shadow(0 0 20px var(--red))
+    drop-shadow(0 0 40px var(--red));
 }
 
 .tagline {
@@ -119,24 +128,46 @@ body {
   margin: 16px auto 0;
 }
 
-/* BOTÃO DISCOS */
+/* ================= BOTÃO DISCOS ================= */
 #discographyBtn {
-  display: inline-block;
-  margin-top: 16px;
-  padding: 8px 20px;
-  background: transparent;
-  border: 2px solid var(--red);
-  color: var(--red);
+  display: block;
+  margin: 20px auto 40px;
+  padding: 10px 20px;
+  font-size: 18px;
   cursor: pointer;
-  font-size: 16px;
-  text-transform: uppercase;
+  background: none;
+  border: 1px solid var(--red);
+  color: var(--red);
   transition: all 0.3s ease;
 }
 
 #discographyBtn:hover {
-  background: var(--red);
+  background-color: var(--red);
   color: #fff;
   box-shadow: 0 0 20px var(--red), 0 0 40px var(--red);
+}
+
+/* ================= DISCOS ================= */
+.discography-block {
+  text-align: center;
+  display: none;
+  margin-bottom: 200px;
+}
+
+.discography-block img {
+  width: 300px;
+  max-width: 80vw;
+  cursor: pointer;
+  filter:
+    drop-shadow(0 0 10px var(--red))
+    drop-shadow(0 0 30px var(--red));
+  transition: filter 0.6s ease;
+}
+
+.discography-block img:hover {
+  filter:
+    drop-shadow(0 0 20px var(--red))
+    drop-shadow(0 0 40px var(--red));
 }
 
 /* ================= TEXTO ================= */
@@ -154,28 +185,6 @@ body {
 .content .en {
   font-size: 22px;
   color: #bbb;
-}
-
-/* ================= DISCOS ================= */
-.discography {
-  display: none;
-  text-align: center;
-  margin-top: 60px;
-}
-
-.discography img {
-  width: 220px;
-  max-width: 50vw;
-  cursor: pointer;
-  transition: filter 0.4s ease, transform 0.4s ease;
-  filter: drop-shadow(0 0 10px var(--red))
-          drop-shadow(0 0 30px var(--red));
-}
-
-.discography img:hover {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 20px var(--red))
-          drop-shadow(0 0 40px var(--red));
 }
 
 /* ================= PLAYER VISUAL ================= */
@@ -227,17 +236,18 @@ body {
 
 .footer img {
   width: 40px;
-  margin-left: 10px;
+  margin-top: 10px;
   cursor: pointer;
-  filter: drop-shadow(0 0 10px var(--red))
-          drop-shadow(0 0 30px var(--red));
-  transition: filter 0.4s ease, transform 0.4s ease;
+  filter:
+    drop-shadow(0 0 10px var(--red))
+    drop-shadow(0 0 20px var(--red));
+  transition: filter 0.6s ease;
 }
 
 .footer img:hover {
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 20px var(--red))
-          drop-shadow(0 0 40px var(--red));
+  filter:
+    drop-shadow(0 0 15px var(--red))
+    drop-shadow(0 0 30px var(--red));
 }
 </style>
 </head>
@@ -261,16 +271,18 @@ body {
     <img src="Logobanda.png" alt="Economic Raped Logo">
     <div class="tagline" id="tagline">Metal Band</div>
     <div class="divider"></div>
-    <button id="discographyBtn">Discografia</button>
   </div>
 
-  <!-- TEXTO -->
+  <!-- BOTÃO DISCOS ABAIXO DA LOGO -->
+  <button id="discographyBtn">Discografia</button>
+
+  <!-- TEXTO PRINCIPAL -->
   <div id="textBlock"></div>
 
   <!-- DISCOS -->
-  <div class="discography" id="discographyBlock">
-    <a href="https://www.spotify.com" target="_blank">
-      <img src="CapaAlbum.jpg" alt="Capa do Album">
+  <div class="discography-block" id="discographyBlock">
+    <a href="https://www.spotify.com/" target="_blank">
+      <img src="CapaAlbum.jpg" alt="Capa do EP">
     </a>
   </div>
 
@@ -282,13 +294,12 @@ body {
   <strong>Economic Raped — No One Is Ever Going to Want Me</strong>
 </div>
 
-<!-- RODAPÉ -->
+<!-- RODAPÉ COM EMAIL E INSTAGRAM -->
 <footer class="footer">
-  <p>Contato: <a href="mailto:EconomicRapedband@gmail.com">EconomicRapedband@gmail.com</a>
+  <p>Contato: <a href="mailto:EconomicRapedband@gmail.com">EconomicRapedband@gmail.com</a></p>
   <a href="https://www.instagram.com/economicraped/" target="_blank">
     <img src="Instagramicon.png" alt="Instagram">
   </a>
-  </p>
 </footer>
 
 <script>
@@ -300,7 +311,6 @@ const logoBtn = document.getElementById("logoBtn");
 const discographyBtn = document.getElementById("discographyBtn");
 const discographyBlock = document.getElementById("discographyBlock");
 
-// === TEXTOS ORIGINAIS ===
 const bandText = `
 <p>
  <strong>Economic Raped</strong> é uma banda de metal fundada em Santos/SP por
@@ -399,7 +409,7 @@ const taigoText = `
 
 textBlock.innerHTML = bandText;
 
-// === CLICK INTEGRANTES ===
+// ===== EVENTOS =====
 allisonBtn.onclick = () => {
   document.body.className = "allison";
   allisonBtn.classList.add("active");
@@ -420,7 +430,6 @@ taigoBtn.onclick = () => {
   textBlock.innerHTML = taigoText;
 };
 
-// === CLICK LOGO ===
 logoBtn.onclick = () => {
   document.body.className = "";
   allisonBtn.classList.remove("active");
@@ -431,13 +440,14 @@ logoBtn.onclick = () => {
   textBlock.innerHTML = bandText;
 };
 
-// === CLICK DISCOS ===
 discographyBtn.onclick = () => {
-  textBlock.style.display = "none";
-  discographyBlock.style.display = "block";
-  // desinchar integrantes
+  // Remove "active" dos integrantes para que não fiquem inchados e não clicáveis
   allisonBtn.classList.remove("active");
   taigoBtn.classList.remove("active");
+
+  // Oculta o texto e mostra a discografia
+  textBlock.style.display = "none";
+  discographyBlock.style.display = "block";
 };
 </script>
 
