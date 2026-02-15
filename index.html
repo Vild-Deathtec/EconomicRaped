@@ -23,6 +23,13 @@ body.allison {
   --red-hover: #8b0000;
 }
 
+/* ===== MODO TAIGO ===== */
+body.taigo {
+  --bg: #0a0014;
+  --red: #8e2de2;
+  --red-hover: #a855f7;
+}
+
 body {
   margin: 0;
   background: var(--bg);
@@ -62,7 +69,6 @@ body {
   color: var(--red-hover);
 }
 
-/* ===== ALLISON ATIVO ===== */
 .member.active {
   transform: scale(1.35);
   color: var(--red);
@@ -137,7 +143,7 @@ body {
   <span class="member">Ana — Vocal</span>
   <span class="member" id="allisonBtn">Allison — Guitarra</span>
   <span class="member">Ciclano — Baixo</span>
-  <span class="member">Taigo — Bateria</span>
+  <span class="member" id="taigoBtn">Taigo — Bateria</span>
 </div>
 
 <!-- CONTEÚDO -->
@@ -157,10 +163,11 @@ body {
 
 <script>
 const allisonBtn = document.getElementById("allisonBtn");
+const taigoBtn = document.getElementById("taigoBtn");
 const textBlock = document.getElementById("textBlock");
 const tagline = document.getElementById("tagline");
 
-let allisonActive = false;
+let activePage = "band";
 
 const bandText = `
 <p>
@@ -199,22 +206,70 @@ const allisonText = `
 </p>
 `;
 
+const taigoText = `
+<p>
+  <strong>Taigo</strong>, baterista da Economic Raped, é natural de
+  <strong>Santos/SP</strong> e desenvolveu sua identidade rítmica a partir da
+  expressividade do Emo combinada com um
+  <strong>groove pesado e arrastado</strong>.
+  <br><br>
+  Suas influências incluem <strong>My Chemical Romance</strong>,
+  <strong>Pierce the Veil</strong>, <strong>MSI</strong> e o peso rítmico do
+  <strong>Pantera</strong>, trazendo uma abordagem groovada mesmo dentro de
+  estruturas técnicas.
+  <br><br>
+  Ao lado de <strong>Allison</strong>, criou a banda como uma ponte real entre
+  <strong>técnica extrema</strong> e <strong>emoção crua</strong>.
+</p>
+
+<p class="en">
+  <strong>Taigo</strong>, drummer of Economic Raped, is from
+  <strong>São Paulo, Brazil</strong>, blending emo expressiveness with heavy groove
+  influences inspired by bands like My Chemical Romance, Pierce the Veil, MSI, and
+  Pantera.
+</p>
+`;
+
+function resetState() {
+  document.body.classList.remove("allison", "taigo");
+  allisonBtn.classList.remove("active");
+  taigoBtn.classList.remove("active");
+}
+
 textBlock.innerHTML = bandText;
 
 allisonBtn.addEventListener("click", () => {
-  allisonActive = !allisonActive;
-
-  if (allisonActive) {
-    document.body.classList.add("allison");
-    allisonBtn.classList.add("active");
-    tagline.textContent = "Guitarrista";
-    textBlock.innerHTML = allisonText;
-  } else {
-    document.body.classList.remove("allison");
-    allisonBtn.classList.remove("active");
+  if (activePage === "allison") {
+    resetState();
     tagline.textContent = "Metal Band";
     textBlock.innerHTML = bandText;
+    activePage = "band";
+    return;
   }
+
+  resetState();
+  document.body.classList.add("allison");
+  allisonBtn.classList.add("active");
+  tagline.textContent = "Guitarrista";
+  textBlock.innerHTML = allisonText;
+  activePage = "allison";
+});
+
+taigoBtn.addEventListener("click", () => {
+  if (activePage === "taigo") {
+    resetState();
+    tagline.textContent = "Metal Band";
+    textBlock.innerHTML = bandText;
+    activePage = "band";
+    return;
+  }
+
+  resetState();
+  document.body.classList.add("taigo");
+  taigoBtn.classList.add("active");
+  tagline.textContent = "Baterista";
+  textBlock.innerHTML = taigoText;
+  activePage = "taigo";
 });
 </script>
 
