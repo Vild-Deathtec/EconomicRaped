@@ -92,8 +92,6 @@ body {
   text-align: center;
   margin-bottom: 20px;
   cursor: pointer;
-  position: relative;
-  z-index: 5;
 }
 
 .band-block img {
@@ -105,12 +103,6 @@ body {
     drop-shadow(0 0 10px var(--red))
     drop-shadow(0 0 30px var(--red));
   transition: filter 0.6s ease;
-}
-
-.band-block:hover img {
-  filter:
-    drop-shadow(0 0 20px var(--red))
-    drop-shadow(0 0 40px var(--red));
 }
 
 .tagline {
@@ -128,48 +120,6 @@ body {
   margin: 16px auto 0;
 }
 
-/* ================= BOTÃO DISCOS ================= */
-#discographyBtn {
-  display: block;
-  margin: 20px auto 40px;
-  padding: 10px 20px;
-  font-size: 18px;
-  cursor: pointer;
-  background: none;
-  border: 1px solid var(--red);
-  color: var(--red);
-  transition: all 0.3s ease;
-}
-
-#discographyBtn:hover {
-  background-color: var(--red);
-  color: #fff;
-  box-shadow: 0 0 20px var(--red), 0 0 40px var(--red);
-}
-
-/* ================= DISCOS ================= */
-.discography-block {
-  text-align: center;
-  display: none;
-  margin-bottom: 200px;
-}
-
-.discography-block img {
-  width: 300px;
-  max-width: 80vw;
-  cursor: pointer;
-  filter:
-    drop-shadow(0 0 10px var(--red))
-    drop-shadow(0 0 30px var(--red));
-  transition: filter 0.6s ease;
-}
-
-.discography-block img:hover {
-  filter:
-    drop-shadow(0 0 20px var(--red))
-    drop-shadow(0 0 40px var(--red));
-}
-
 /* ================= TEXTO ================= */
 .content p {
   font-size: 26px;
@@ -185,6 +135,48 @@ body {
 .content .en {
   font-size: 22px;
   color: #bbb;
+}
+
+/* ================= DISCOS ================= */
+.discography {
+  display: none;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.discography img {
+  width: 220px;
+  max-width: 50vw;
+  cursor: pointer;
+  transition: filter 0.4s ease, transform 0.4s ease;
+  filter: drop-shadow(0 0 10px var(--red))
+          drop-shadow(0 0 30px var(--red));
+}
+
+.discography img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 20px var(--red))
+          drop-shadow(0 0 40px var(--red));
+}
+
+/* ================= BOTÃO DISCOS ================= */
+#discographyBtn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 8px 20px;
+  background: transparent;
+  border: 2px solid var(--red);
+  color: var(--red);
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+#discographyBtn:hover {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 0 20px var(--red), 0 0 40px var(--red);
 }
 
 /* ================= PLAYER VISUAL ================= */
@@ -236,18 +228,17 @@ body {
 
 .footer img {
   width: 40px;
-  margin-top: 10px;
+  margin-left: 10px;
   cursor: pointer;
-  filter:
-    drop-shadow(0 0 10px var(--red))
-    drop-shadow(0 0 20px var(--red));
-  transition: filter 0.6s ease;
+  filter: drop-shadow(0 0 10px var(--red))
+          drop-shadow(0 0 30px var(--red));
+  transition: filter 0.4s ease, transform 0.4s ease;
 }
 
 .footer img:hover {
-  filter:
-    drop-shadow(0 0 15px var(--red))
-    drop-shadow(0 0 30px var(--red));
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 20px var(--red))
+          drop-shadow(0 0 40px var(--red));
 }
 </style>
 </head>
@@ -271,18 +262,18 @@ body {
     <img src="Logobanda.png" alt="Economic Raped Logo">
     <div class="tagline" id="tagline">Metal Band</div>
     <div class="divider"></div>
+
+    <!-- BOTÃO DISCOS -->
+    <button id="discographyBtn">Discografia</button>
   </div>
 
-  <!-- BOTÃO DISCOS ABAIXO DA LOGO -->
-  <button id="discographyBtn">Discografia</button>
-
-  <!-- TEXTO PRINCIPAL -->
+  <!-- TEXTO -->
   <div id="textBlock"></div>
 
   <!-- DISCOS -->
-  <div class="discography-block" id="discographyBlock">
-    <a href="https://www.spotify.com/" target="_blank">
-      <img src="CapaAlbum.jpg" alt="Capa do EP">
+  <div class="discography" id="discographyBlock">
+    <a href="https://www.spotify.com" target="_blank">
+      <img src="CapaAlbum.jpg" alt="Capa do Album">
     </a>
   </div>
 
@@ -296,10 +287,11 @@ body {
 
 <!-- RODAPÉ COM EMAIL E INSTAGRAM -->
 <footer class="footer">
-  <p>Contato: <a href="mailto:EconomicRapedband@gmail.com">EconomicRapedband@gmail.com</a></p>
+  <p>Contato: <a href="mailto:EconomicRapedband@gmail.com">EconomicRapedband@gmail.com</a>
   <a href="https://www.instagram.com/economicraped/" target="_blank">
     <img src="Instagramicon.png" alt="Instagram">
   </a>
+  </p>
 </footer>
 
 <script>
@@ -318,32 +310,17 @@ const bandText = `
   que não existia um espaço claro onde a <strong>técnica extrema</strong> e a
   <strong>complexidade musical</strong> pudessem coexistir com a
   <strong>expressividade emocional</strong> do Emo.
-  <br><br>
-  A proposta da banda é construir uma ponte real entre dois mundos que
-  historicamente caminharam separados: o rigor técnico do
-  <strong>metal extremamente técnico</strong> e a carga emocional crua,
-  vulnerável e direta do Emo.
 </p>
 
 <p>
   Musicalmente, a banda explora estruturas complexas, harmonias avançadas,
   grooves pesados e variações rítmicas, sem abrir mão de identidade,
   atmosfera e impacto emocional.
-  <br><br>
-  A formação atual conta com <strong>Ana</strong> (vocal),
-  <strong>Allison</strong> (guitarra),
-  <strong>Ciclano</strong> (baixo) e
-  <strong>Taigo</strong> (bateria).
 </p>
 
 <p class="en">
   <strong>Economic Raped</strong> is a metal band founded in Santos, Brazil, by
-  <strong>Allison</strong> and <strong>Taigo</strong>, created from the need to
-  connect extreme technicality with emotional expression.
-  <br><br>
-  The band bridges highly technical metal structures with the raw emotional
-  intensity of emo, merging complexity, groove, and feeling into a single
-  musical identity.
+  <strong>Allison</strong> and <strong>Taigo</strong>.
 </p>
 `;
 
@@ -352,64 +329,25 @@ const allisonText = `
   <strong>Allison</strong>, guitarrista da Economic Raped, é natural da capital de
   São Paulo e desenvolveu sua identidade musical a partir do
   <strong>neoclassicismo</strong> e do <strong>death metal técnico</strong>.
-  <br><br>
-  Sua abordagem combina domínio técnico, consciência harmônica e construção
-  narrativa dentro do solo, buscando não apenas velocidade ou complexidade,
-  mas <strong>direção musical e expressão</strong>.
 </p>
-
-<p>
-  Entre suas principais influências estão <strong>Cacophony</strong>,
-  <strong>First Fragment</strong> e <strong>Necrophagist</strong>, referências que
-  moldaram sua visão sobre técnica aplicada à composição, e não apenas como
-  demonstração de habilidade.
-  <br><br>
-  A criação da banda, ao lado de Taigo, surgiu da necessidade de estabelecer
-  um meio termo real entre a sofisticação técnica do metal extremo e a
-  <strong>emoção direta e humana</strong> presente no Emo.
-</p>
-
 <p class="en">
   <strong>Allison</strong>, guitarist of Economic Raped, is from SP, Brazil.
-  His style is rooted in neoclassical guitar and technical death metal,
-  focusing on musical direction, harmonic awareness, and emotional intent
-  rather than pure technical display.
 </p>
 `;
 
 const taigoText = `
 <p>
   <strong>Taigo</strong>, baterista da Economic Raped, é natural de Santos/SP e
-  construiu sua identidade musical a partir de uma combinação pouco comum:
-  a <strong>emoção do Emo</strong> com o <strong>peso e groove</strong> do metal.
-  <br><br>
-  Suas principais influências incluem <strong>My Chemical Romance</strong>,
-  <strong>Pierce The Veil</strong>, <strong>MSI</strong> e o groove massivo do
-  <strong>Pantera</strong>, que moldaram sua forma de pensar ritmo, impacto e
-  dinâmica.
+  construiu sua identidade musical a partir de uma combinação pouco comum.
 </p>
-
-<p>
-  Diferente de uma abordagem puramente técnica, Taigo prioriza
-  <strong>groove, intenção e peso</strong>, utilizando a bateria como elemento
-  condutor da música, e não apenas como base rítmica.
-  <br><br>
-  Junto com Allison, idealizou a Economic Raped como um espaço onde fosse
-  possível unir técnica, groove e emoção, criando uma linguagem que não
-  excluísse nenhum desses elementos.
-</p>
-
 <p class="en">
   <strong>Taigo</strong>, drummer of Economic Raped, is from SP, Brazil.
-  His style blends emo-driven emotion with heavy groove-oriented metal,
-  influenced by bands like My Chemical Romance, Pierce The Veil, MSI, and
-  Pantera.
 </p>
 `;
 
 textBlock.innerHTML = bandText;
 
-// ===== EVENTOS =====
+// CLICK INTEGRANTES
 allisonBtn.onclick = () => {
   document.body.className = "allison";
   allisonBtn.classList.add("active");
@@ -430,6 +368,7 @@ taigoBtn.onclick = () => {
   textBlock.innerHTML = taigoText;
 };
 
+// CLICK LOGO
 logoBtn.onclick = () => {
   document.body.className = "";
   allisonBtn.classList.remove("active");
@@ -440,9 +379,13 @@ logoBtn.onclick = () => {
   textBlock.innerHTML = bandText;
 };
 
+// CLICK DISCOS
 discographyBtn.onclick = () => {
   textBlock.style.display = "none";
   discographyBlock.style.display = "block";
+  // desinchar integrantes
+  allisonBtn.classList.remove("active");
+  taigoBtn.classList.remove("active");
 };
 </script>
 
