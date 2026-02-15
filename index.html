@@ -14,6 +14,8 @@
   --red: #e63946;
   --red-hover: #ff4d5a;
   --text: #eaeaea;
+  --glow: rgba(230,57,70,0.8);
+  --glow-strong: rgba(230,57,70,0.6);
 }
 
 /* ===== MODO ALLISON ===== */
@@ -21,6 +23,8 @@ body.allison {
   --bg: #080000;
   --red: #8b0000;
   --red-hover: #8b0000;
+  --glow: rgba(139,0,0,0.8);
+  --glow-strong: rgba(139,0,0,0.6);
 }
 
 /* ===== MODO TAIGO ===== */
@@ -28,6 +32,8 @@ body.taigo {
   --bg: #0a0014;
   --red: #8e2de2;
   --red-hover: #a855f7;
+  --glow: rgba(142,45,226,0.8);
+  --glow-strong: rgba(142,45,226,0.6);
 }
 
 body {
@@ -94,9 +100,10 @@ body {
   max-width: 92vw;
   display: block;
   margin: 0 auto;
+  transition: filter 0.8s ease;
   filter:
-    drop-shadow(0 0 10px rgba(139,0,0,0.8))
-    drop-shadow(0 0 30px rgba(139,0,0,0.6));
+    drop-shadow(0 0 10px var(--glow))
+    drop-shadow(0 0 30px var(--glow-strong));
 }
 
 .tagline {
@@ -195,14 +202,17 @@ const allisonText = `
   São Paulo e construiu sua identidade musical entre o
   <strong>neoclassicismo</strong> e o <strong>death metal técnico</strong>.
   <br><br>
+  Suas principais influências incluem <strong>Cacophony</strong>,
+  <strong>First Fragment</strong> e <strong>Necrophagist</strong>, refletindo uma
+  abordagem que une virtuosismo extremo, precisão técnica e construção melódica.
+  <br><br>
   A banda surgiu da necessidade de unir tecnicidade extrema e expressão emocional,
   conectando a sofisticação do metal técnico à intensidade do Emo.
 </p>
 
 <p class="en">
   <strong>Allison</strong>, guitarist of Economic Raped, is from SP, Brazil, and
-  developed his style through neoclassical influences and technical death metal,
-  blending precision with emotional intensity.
+  developed his style through neoclassical and technical death metal influences.
 </p>
 `;
 
@@ -214,9 +224,8 @@ const taigoText = `
   <strong>groove pesado e arrastado</strong>.
   <br><br>
   Suas influências incluem <strong>My Chemical Romance</strong>,
-  <strong>Pierce the Veil</strong>, <strong>MSI</strong> e o peso rítmico do
-  <strong>Pantera</strong>, trazendo uma abordagem groovada mesmo dentro de
-  estruturas técnicas.
+  <strong>Pierce the Veil</strong>, <strong>MSI</strong> e o groove marcante do
+  <strong>Pantera</strong>.
   <br><br>
   Ao lado de <strong>Allison</strong>, criou a banda como uma ponte real entre
   <strong>técnica extrema</strong> e <strong>emoção crua</strong>.
@@ -224,9 +233,8 @@ const taigoText = `
 
 <p class="en">
   <strong>Taigo</strong>, drummer of Economic Raped, is from
-  <strong>São Paulo, Brazil</strong>, blending emo expressiveness with heavy groove
-  influences inspired by bands like My Chemical Romance, Pierce the Veil, MSI, and
-  Pantera.
+  <strong>SP, Brazil</strong>, blending emo expressiveness with heavy groove-driven
+  influences.
 </p>
 `;
 
