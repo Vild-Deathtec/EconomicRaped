@@ -162,6 +162,26 @@ body {
   color: #fff;
   font-weight: normal;
 }
+
+/* ===== RODAPÉ ===== */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text);
+  font-size: 18px;
+  background: #111; /* fundo escuro */
+  margin-top: 50px; /* separa do conteúdo */
+}
+
+.footer a {
+  color: var(--red);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--red-hover);
+}
 </style>
 </head>
 
@@ -196,6 +216,11 @@ body {
   <span>Tocando agora</span>
   <strong>Economic Raped — No One Is Ever Going to Want Me</strong>
 </div>
+
+<!-- RODAPÉ COM EMAIL -->
+<footer class="footer">
+  <p>Contato: <a href="mailto:EconomidRapedband@gmail.com">EconomidRapedband@gmail.com</a></p>
+</footer>
 
 <script>
 const allisonBtn = document.getElementById("allisonBtn");
