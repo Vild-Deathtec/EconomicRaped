@@ -273,10 +273,10 @@ body {
     <div class="divider"></div>
   </div>
 
-  <!-- BOTÃO DISCOS ABAIXO DA LOGO -->
+  <!-- BOTÃO DISCOS -->
   <button id="discographyBtn">Discografia</button>
 
-  <!-- TEXTO PRINCIPAL -->
+  <!-- TEXTO -->
   <div id="textBlock"></div>
 
   <!-- DISCOS -->
@@ -288,17 +288,22 @@ body {
 
 </div>
 
-<!-- PLAYER VISUAL -->
+<!-- PLAYER -->
 <div class="now-playing">
   <span>Tocando agora</span>
   <strong>Economic Raped — No One Is Ever Going to Want Me</strong>
 </div>
 
-<!-- RODAPÉ COM EMAIL E INSTAGRAM -->
+<!-- RODAPÉ -->
 <footer class="footer">
   <p>Contato: <a href="mailto:EconomicRapedband@gmail.com">EconomicRapedband@gmail.com</a></p>
+
   <a href="https://www.instagram.com/economicraped/" target="_blank">
     <img src="Instagramicon.png" alt="Instagram">
+  </a>
+
+  <a href="https://www.tiktok.com/@economicraped" target="_blank">
+    <img src="Tiktokicon.png" alt="TikTok">
   </a>
 </footer>
 
@@ -410,7 +415,7 @@ const taigoText = `
 
 textBlock.innerHTML = bandText;
 
-// ===== EVENTOS =====
+// EVENTOS
 allisonBtn.onclick = () => {
   document.body.className = "allison";
   allisonBtn.classList.add("active");
@@ -444,17 +449,13 @@ logoBtn.onclick = () => {
 discographyBtn.onclick = () => {
   textBlock.style.display = "none";
   discographyBlock.style.display = "block";
-
-  // remove active/scale dos membros durante discografia
   allisonBtn.classList.remove("active");
   taigoBtn.classList.remove("active");
 };
 
-// ===== AJUSTE MOBILE =====
+// MOBILE
 if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
   document.body.classList.add("mobile");
-
-  // move membros para final do conteúdo
   const content = document.querySelector(".content");
   content.parentNode.insertBefore(members, content.nextSibling);
 
