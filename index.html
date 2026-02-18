@@ -34,6 +34,13 @@ body.taigo {
   --red-hover: #7a1fa2;
 }
 
+/* ===== MODO MATHEUS ===== */
+body.matheus {
+  --bg: #001a0d;
+  --red: #1fa26a;
+  --red-hover: #1fa26a;
+}
+  
 body {
   margin: 0;
   background: var(--bg);
@@ -259,7 +266,7 @@ body {
   <h2>Integrantes</h2>
   <span class="member">Ana — Vocal</span>
   <span class="member" id="allisonBtn">Allison — Guitarra</span>
-  <span class="member">Ciclano — Baixo</span>
+  <span class="member" id="matheusBtn">Matheus — Baixo</span>
   <span class="member" id="taigoBtn">Taigo — Bateria</span>
 </div>
 
@@ -310,6 +317,7 @@ body {
 <script>
 const allisonBtn = document.getElementById("allisonBtn");
 const taigoBtn = document.getElementById("taigoBtn");
+const matheusBtn = document.getElementById("matheusBtn");
 const textBlock = document.getElementById("textBlock");
 const tagline = document.getElementById("tagline");
 const logoBtn = document.getElementById("logoBtn");
@@ -420,6 +428,7 @@ allisonBtn.onclick = () => {
   document.body.className = "allison";
   allisonBtn.classList.add("active");
   taigoBtn.classList.remove("active");
+  matheusBtn.classList.remove("active");
   tagline.textContent = "Guitarra";
   textBlock.style.display = "block";
   discographyBlock.style.display = "none";
@@ -430,10 +439,21 @@ taigoBtn.onclick = () => {
   document.body.className = "taigo";
   taigoBtn.classList.add("active");
   allisonBtn.classList.remove("active");
+  matheusBtn.classList.remove("active");
   tagline.textContent = "Bateria";
   textBlock.style.display = "block";
   discographyBlock.style.display = "none";
   textBlock.innerHTML = taigoText;
+};
+
+matheusBtn.onclick = () => {
+  document.body.className = "matheus";
+  matheusBtn.classList.add("active");
+  allisonBtn.classList.remove("active");
+  taigoBtn.classList.remove("active");
+  tagline.textContent = "Baixo";
+  textBlock.style.display = "none";
+  discographyBlock.style.display = "none";
 };
 
 logoBtn.onclick = () => {
