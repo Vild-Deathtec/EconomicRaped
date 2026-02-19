@@ -34,15 +34,13 @@ body.taigo {
   --red-hover: #7a1fa2;
 }
 
-/* ===== MODO MATHEUS ===== */
-body.matheus {
 /* ===== MODO MATEUS ===== */
 body.mateus {
   --bg: #001a0d;
   --red: #1fa26a;
   --red-hover: #1fa26a;
 }
-
+  
 body {
   margin: 0;
   background: var(--bg);
@@ -268,7 +266,6 @@ body {
   <h2>Integrantes</h2>
   <span class="member">Ana — Vocal</span>
   <span class="member" id="allisonBtn">Allison — Guitarra</span>
-  <span class="member" id="matheusBtn">Matheus — Baixo</span>
   <span class="member" id="mateusBtn">Mateus — Baixo</span>
   <span class="member" id="taigoBtn">Taigo — Bateria</span>
 </div>
@@ -320,7 +317,6 @@ body {
 <script>
 const allisonBtn = document.getElementById("allisonBtn");
 const taigoBtn = document.getElementById("taigoBtn");
-const matheusBtn = document.getElementById("matheusBtn");
 const mateusBtn = document.getElementById("mateusBtn");
 const textBlock = document.getElementById("textBlock");
 const tagline = document.getElementById("tagline");
@@ -432,7 +428,6 @@ allisonBtn.onclick = () => {
   document.body.className = "allison";
   allisonBtn.classList.add("active");
   taigoBtn.classList.remove("active");
-  matheusBtn.classList.remove("active");
   mateusBtn.classList.remove("active");
   tagline.textContent = "Guitarra";
   textBlock.style.display = "block";
@@ -444,7 +439,6 @@ taigoBtn.onclick = () => {
   document.body.className = "taigo";
   taigoBtn.classList.add("active");
   allisonBtn.classList.remove("active");
-  matheusBtn.classList.remove("active");
   mateusBtn.classList.remove("active");
   tagline.textContent = "Bateria";
   textBlock.style.display = "block";
@@ -452,10 +446,8 @@ taigoBtn.onclick = () => {
   textBlock.innerHTML = taigoText;
 };
 
-matheusBtn.onclick = () => {
 mateusBtn.onclick = () => {
   document.body.className = "matheus";
-  matheusBtn.classList.add("active");
   mateusBtn.classList.add("active");
   allisonBtn.classList.remove("active");
   taigoBtn.classList.remove("active");
@@ -468,7 +460,6 @@ logoBtn.onclick = () => {
   document.body.className = "";
   allisonBtn.classList.remove("active");
   taigoBtn.classList.remove("active");
-  matheusBtn.classList.remove("active");
   mateusBtn.classList.remove("active");
   tagline.textContent = "Metal Band";
   textBlock.style.display = "block";
