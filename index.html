@@ -105,22 +105,27 @@ body {
 }
 
 .logo-img {
-  position: absolute;      /* sobrepõe o conteúdo do container */
+  position: absolute;      
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 420px;
   max-width: 92vw;
-  transition: opacity 1s ease;
+  transition: opacity 1s ease, transform 0.4s ease; /* inclui transform para hover suave */
   opacity: 0;
   filter: drop-shadow(0 0 10px var(--red)) drop-shadow(0 0 30px var(--red));
-  z-index: 2;               /* garante que fique acima do tagline */
+  z-index: 2;
+  cursor: pointer; /* mostra que é clicável */
 }
 
 .logo-img.active {
   opacity: 1;
 }
 
+.logo-img.active:hover {
+  transform: translateX(-50%) scale(1.05);
+}
+  
 .tagline {
   margin-top: 180px;        /* distância para a logo não “colar” totalmente */
   font-size: 14px;
