@@ -329,15 +329,20 @@ const members = document.querySelector(".members");
   // ================== FUNÇÃO FADE DA LOGO ==================
 function fadeLogo(newSrc) {
   const logoImg = logoBtn.querySelector("img");
-  
+
+  // aplica transição mais suave
+  logoImg.style.transition = "opacity 0.4s ease";
+
   // fade out
   logoImg.style.opacity = 0;
 
-  // troca a imagem depois de 0.5s e fade in
+  // troca a imagem depois do fade out
   setTimeout(() => {
     logoImg.src = newSrc;
+
+    // fade in
     logoImg.style.opacity = 1;
-  }, 500);
+  }, 400); // mesmo tempo do fade-out
 }
 
 const bandText = `
