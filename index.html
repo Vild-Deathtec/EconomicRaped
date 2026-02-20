@@ -96,23 +96,25 @@ body {
 
 /* ================= LOGO ================= */
 .band-block {
-  position: relative;     /* container relativo */
+  position: relative;      /* container relativo para a logo absoluta */
   width: 420px;
   max-width: 92vw;
   margin: 0 auto;
+  padding-top: 60px;       /* distância do topo da página */
   text-align: center;
-  padding-top: 40px;      /* distância do topo da página */
 }
 
 .logo-img {
-  position: relative;     /* agora a logo ocupa espaço no fluxo */
+  position: absolute;      /* sobrepõe o conteúdo do container */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 420px;
   max-width: 92vw;
-  margin: 0 auto;
-  display: block;
-  transition: opacity 0.8s ease;
+  transition: opacity 1s ease;
   opacity: 0;
   filter: drop-shadow(0 0 10px var(--red)) drop-shadow(0 0 30px var(--red));
+  z-index: 2;               /* garante que fique acima do tagline */
 }
 
 .logo-img.active {
@@ -120,13 +122,15 @@ body {
 }
 
 .tagline {
-  margin-top: 20px;       /* distância abaixo da logo */
+  margin-top: 180px;        /* distância para a logo não “colar” totalmente */
   font-size: 14px;
   letter-spacing: 5px;
   color: var(--red);
   text-transform: uppercase;
+  z-index: 1;
+  position: relative;
 }
-
+  
 .divider {
   width: 200px;
   height: 2px;
