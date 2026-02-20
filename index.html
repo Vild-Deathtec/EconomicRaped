@@ -332,9 +332,11 @@ const members = document.querySelector(".members");
 
   
   // ================== FUNÇÃO FADE DA LOGO ==================
-function fadeLogoSmooth(targetClass) {
+function fadeLogoSmooth(newSrc) {
   const currentLogo = logoBtn.querySelector(".logo-img.active");
-  const newLogo = logoBtn.querySelector(`.logo-img.${targetClass}`);
+  const newLogo = Array.from(logoBtn.querySelectorAll(".logo-img"))
+                       .find(img => img.src.includes(newSrc));
+
   if (!newLogo || currentLogo === newLogo) return;
 
   currentLogo.classList.remove("active");
