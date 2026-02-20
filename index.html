@@ -76,7 +76,8 @@ body {
 }
 
 .member:hover {
-  transform: scale(1.25);  
+  transform: scale(1.25);
+  color: var(--red-hover);
 }
 
 .member.active {
@@ -264,9 +265,9 @@ body {
 <div class="members">
   <h2>Integrantes</h2>
   <span class="member">Ana — Vocal</span>
-  <span class="member" id="allisonBtn" data-color="#8b0000">Allison — Guitarra</span>
-  <span class="member" id="mateusBtn" data-color="#1fa26a">Mateus — Baixo</span>
-  <span class="member" id="taigoBtn" data-color="#7a1fa2">Taigo — Bateria</span>
+  <span class="member" id="allisonBtn">Allison — Guitarra</span>
+  <span class="member" id="mateusBtn">Mateus — Baixo</span>
+  <span class="member" id="taigoBtn">Taigo — Bateria</span>
 </div>
 
 <!-- CONTEÚDO -->
@@ -490,23 +491,8 @@ if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
 
   document.querySelectorAll(".member").forEach(member => {
     member.style.display = "block";
-    };
-  document.querySelectorAll(".member").forEach(member => {
-  const color = member.getAttribute("data-color");
-  if (!color) return;
-
-  member.addEventListener("mouseenter", () => {
-    member.style.color = color;
-    member.style.textShadow = `0 0 10px ${color}`;
   });
-
-  member.addEventListener("mouseleave", () => {
-    if (!member.classList.contains("active")) {
-      member.style.color = "";
-      member.style.textShadow = "";
-    }
-  });
-});
+}
 </script>
 
 </body>
