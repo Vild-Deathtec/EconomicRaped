@@ -96,46 +96,40 @@ body {
 
 /* ================= LOGO ================= */
 .band-block {
-  position: relative; /* para sobrepor imagens */
+  position: relative;       /* mantém o container relativo */
   width: 420px;
   max-width: 92vw;
   margin: 0 auto;
+  height: auto;             /* deixa a altura se ajustar */
+  text-align: center;       /* centraliza a tagline */
 }
 
 .logo-img {
-  position: absolute;       /* deixa todas sobrepostas */
+  position: absolute;       /* todas ficam sobrepostas */
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 420px;
   max-width: 92vw;
-  transition: opacity 1s ease;  /* faz o fade suave */
-  opacity: 0;                  /* invisível por padrão */
-  filter:
-    drop-shadow(0 0 10px var(--red))
-    drop-shadow(0 0 30px var(--red)); /* mantém o glow */
+  transition: opacity 0.8s ease;
+  opacity: 0;
+  filter: drop-shadow(0 0 10px var(--red)) drop-shadow(0 0 30px var(--red));
+  z-index: 1;
 }
 
 .logo-img.active {
-  opacity: 1;                  /* imagem visível */
-}
-
-.band-block img.logo-img.active {
-  opacity: 1; /* visível */
-}
-  
-.band-block:hover img {
-  filter:
-    drop-shadow(0 0 20px var(--red))
-    drop-shadow(0 0 40px var(--red));
+  opacity: 1;
+  z-index: 2;               /* garante que a logo ativa fique acima */
 }
 
 .tagline {
-  margin-top: 14px;
+  margin-top: 300px;        /* ajusta abaixo da logo */
   font-size: 14px;
   letter-spacing: 5px;
   color: var(--red);
   text-transform: uppercase;
+  position: relative;       /* garante que fique abaixo da logo */
+  z-index: 3;               /* sempre acima das logos */
 }
 
 .divider {
