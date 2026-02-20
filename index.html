@@ -330,21 +330,17 @@ const members = document.querySelector(".members");
 function fadeLogoSmooth(newSrc) {
   const logoImg = logoBtn.querySelector("img");
 
-  // garante a transição suave
-  logoImg.style.transition = "all 0.8s ease"; // opacidade + blur
-
-  // efeito de "desfocar" levemente antes de trocar
-  logoImg.style.filter = "blur(4px)";
-  
-  // não zera a opacidade, só dá leve fade
+  // aplica blur leve e mantém o glow
+  logoImg.style.transition = "all 0.8s ease";
+  logoImg.style.filter = "blur(2px) drop-shadow(0 0 10px var(--red)) drop-shadow(0 0 30px var(--red))";
   logoImg.style.opacity = 0.85;
 
-  // troca a imagem depois de 0.4s
   setTimeout(() => {
+    // troca a imagem
     logoImg.src = newSrc;
 
-    // remove blur e normaliza opacidade
-    logoImg.style.filter = "blur(0px)";
+    // remove o blur, mantém o glow e restaura a opacidade
+    logoImg.style.filter = "drop-shadow(0 0 10px var(--red)) drop-shadow(0 0 30px var(--red))";
     logoImg.style.opacity = 1;
   }, 400);
 }
