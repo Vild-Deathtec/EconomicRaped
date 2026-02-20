@@ -327,22 +327,26 @@ const members = document.querySelector(".members");
 
   
   // ================== FUNÇÃO FADE DA LOGO ==================
-function fadeLogo(newSrc) {
+function fadeLogoSmooth(newSrc) {
   const logoImg = logoBtn.querySelector("img");
 
-  // aplica transição mais suave
-  logoImg.style.transition = "opacity 0.4s ease";
+  // garante a transição suave
+  logoImg.style.transition = "all 0.8s ease"; // opacidade + blur
 
-  // fade out
-  logoImg.style.opacity = 0;
+  // efeito de "desfocar" levemente antes de trocar
+  logoImg.style.filter = "blur(4px)";
+  
+  // não zera a opacidade, só dá leve fade
+  logoImg.style.opacity = 0.85;
 
-  // troca a imagem depois do fade out
+  // troca a imagem depois de 0.4s
   setTimeout(() => {
     logoImg.src = newSrc;
 
-    // fade in
+    // remove blur e normaliza opacidade
+    logoImg.style.filter = "blur(0px)";
     logoImg.style.opacity = 1;
-  }, 400); // mesmo tempo do fade-out
+  }, 400);
 }
 
 const bandText = `
