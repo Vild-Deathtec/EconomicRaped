@@ -111,7 +111,7 @@ body {
   filter:
     drop-shadow(0 0 10px var(--red))
     drop-shadow(0 0 30px var(--red));
-  transition: filter 0.6s ease;
+    transition: filter 0.6s ease, opacity 1s ease;
 }
 
 .band-block:hover img {
@@ -325,6 +325,21 @@ const discographyBtn = document.getElementById("discographyBtn");
 const discographyBlock = document.getElementById("discographyBlock");
 const members = document.querySelector(".members");
 
+  
+  // ================== FUNÇÃO FADE DA LOGO ==================
+function fadeLogo(newSrc) {
+  const logoImg = logoBtn.querySelector("img");
+  
+  // fade out
+  logoImg.style.opacity = 0;
+
+  // troca a imagem depois de 0.5s e fade in
+  setTimeout(() => {
+    logoImg.src = newSrc;
+    logoImg.style.opacity = 1;
+  }, 500);
+}
+
 const bandText = `
 <p>
  <strong>Economic Raped</strong> é uma banda de metal fundada em Santos/SP por
@@ -465,6 +480,9 @@ logoBtn.onclick = () => {
   textBlock.style.display = "block";
   discographyBlock.style.display = "none";
   textBlock.innerHTML = bandText;
+
+  // volta para a logo original com fade
+  fadeLogo("Logobanda.png");
 };
 
 discographyBtn.onclick = () => {
@@ -473,6 +491,9 @@ discographyBtn.onclick = () => {
   allisonBtn.classList.remove("active");
   taigoBtn.classList.remove("active");
   mateusBtn.classList.remove("active");
+
+   // troca a logo para branca com fade
+  fadeLogo("LogobandaBranca.png");
 };
 
 // MOBILE
