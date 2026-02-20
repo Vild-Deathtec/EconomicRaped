@@ -96,40 +96,35 @@ body {
 
 /* ================= LOGO ================= */
 .band-block {
-  position: relative;       /* mantém o container relativo */
+  position: relative;     /* container relativo */
   width: 420px;
   max-width: 92vw;
   margin: 0 auto;
-  height: auto;             /* deixa a altura se ajustar */
-  text-align: center;       /* centraliza a tagline */
+  text-align: center;
+  padding-top: 40px;      /* distância do topo da página */
 }
 
 .logo-img {
-  position: absolute;       /* todas ficam sobrepostas */
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;     /* agora a logo ocupa espaço no fluxo */
   width: 420px;
   max-width: 92vw;
+  margin: 0 auto;
+  display: block;
   transition: opacity 0.8s ease;
   opacity: 0;
   filter: drop-shadow(0 0 10px var(--red)) drop-shadow(0 0 30px var(--red));
-  z-index: 1;
 }
 
 .logo-img.active {
   opacity: 1;
-  z-index: 2;               /* garante que a logo ativa fique acima */
 }
 
 .tagline {
-  margin-top: 300px;        /* ajusta abaixo da logo */
+  margin-top: 20px;       /* distância abaixo da logo */
   font-size: 14px;
   letter-spacing: 5px;
   color: var(--red);
   text-transform: uppercase;
-  position: relative;       /* garante que fique abaixo da logo */
-  z-index: 3;               /* sempre acima das logos */
 }
 
 .divider {
@@ -333,17 +328,12 @@ const members = document.querySelector(".members");
 
   
   // ================== FUNÇÃO FADE DA LOGO ==================
-function fadeLogoSmooth(newSrc) {
+function fadeLogoSmooth(targetClass) {
   const currentLogo = logoBtn.querySelector(".logo-img.active");
-  const newLogo = Array.from(logoBtn.querySelectorAll(".logo-img"))
-                       .find(img => img.src.includes(newSrc));
-
+  const newLogo = logoBtn.querySelector(`.logo-img.${targetClass}`);
   if (!newLogo || currentLogo === newLogo) return;
 
-  // Fade out da logo atual
   currentLogo.classList.remove("active");
-
-  // Fade in da nova logo
   newLogo.classList.add("active");
 }
 
