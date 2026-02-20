@@ -96,24 +96,34 @@ body {
 
 /* ================= LOGO ================= */
 .band-block {
-  text-align: center;
-  margin-bottom: 20px;
-  cursor: pointer;
-  position: relative;
-  z-index: 5;
-}
-
-.band-block img {
+  position: relative; /* para sobrepor imagens */
   width: 420px;
   max-width: 92vw;
-  display: block;
   margin: 0 auto;
-  filter:
-    drop-shadow(0 0 10px var(--red))
-    drop-shadow(0 0 30px var(--red));
-    transition: filter 0.6s ease, opacity 1s ease;
 }
 
+.logo-img {
+  position: absolute;       /* deixa todas sobrepostas */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 420px;
+  max-width: 92vw;
+  transition: opacity 1s ease;  /* faz o fade suave */
+  opacity: 0;                  /* invisível por padrão */
+  filter:
+    drop-shadow(0 0 10px var(--red))
+    drop-shadow(0 0 30px var(--red)); /* mantém o glow */
+}
+
+.logo-img.active {
+  opacity: 1;                  /* imagem visível */
+}
+
+.band-block img.logo-img.active {
+  opacity: 1; /* visível */
+}
+  
 .band-block:hover img {
   filter:
     drop-shadow(0 0 20px var(--red))
@@ -275,7 +285,9 @@ body {
 
   <!-- LOGO -->
   <div class="band-block" id="logoBtn">
-    <img src="Logobanda.png" alt="Economic Raped Logo">
+    <img src="Logobanda.png" alt="Logo Original" class="logo-img logo-default active">
+    <img src="LogobandaAllison.png" alt="Logo Allison" class="logo-img logo-allison">
+    <img src="LogobandaBranca.png" alt="Logo Discografia" class="logo-img logo-discography">
     <div class="tagline" id="tagline">Metal Band</div>
     <div class="divider"></div>
   </div>
@@ -328,22 +340,19 @@ const members = document.querySelector(".members");
   
   // ================== FUNÇÃO FADE DA LOGO ==================
 function fadeLogoSmooth(newSrc) {
-  const logoImg = logoBtn.querySelector("img");
+  const currentLogo = logoBtn.querySelector(".logo-img.active");
+  const newLogo = Array.from(logoBtn.querySelectorAll(".logo-img"))
+                       .find(img => img.src.includes(newSrc));
 
-  // aplica blur leve e mantém o glow
-  logoImg.style.transition = "all 0.8s ease";
-  logoImg.style.filter = "blur(2px) drop-shadow(0 0 10px var(--red)) drop-shadow(0 0 30px var(--red))";
-  logoImg.style.opacity = 0.85;
+  if (!newLogo || currentLogo === newLogo) return;
 
-  setTimeout(() => {
-    // troca a imagem
-    logoImg.src = newSrc;
+  // Fade out da logo atual
+  currentLogo.classList.remove("active");
 
-    // remove o blur, mantém o glow e restaura a opacidade
-    logoImg.style.filter = "drop-shadow(0 0 10px var(--red)) drop-shadow(0 0 30px var(--red))";
-    logoImg.style.opacity = 1;
-  }, 400);
+  // Fade in da nova logo
+  newLogo.classList.add("active");
 }
+
 
 const bandText = `
 <p>
