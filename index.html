@@ -477,11 +477,27 @@ allisonBtn.onclick = () => {
   fadeLogoSmooth("LogobandaAllison.png");
 };
 
+anaBtn.onclick = () => {
+  document.body.className = "ana";
+  anaBtn.classList.add("active");
+  allisonBtn.classList.remove("active");
+  taigoBtn.classList.remove("active");
+  mateusBtn.classList.remove("active");
+
+  tagline.textContent = "Vocal";
+  textBlock.style.display = "block";
+  discographyBlock.style.display = "none";
+  textBlock.innerHTML = anaText;
+
+  fadeLogoSmooth("LogobandaAna.png");
+};
+  
 taigoBtn.onclick = () => {
   document.body.className = "taigo";
   taigoBtn.classList.add("active");
   allisonBtn.classList.remove("active");
   mateusBtn.classList.remove("active");
+  anaBtn.classList.remove("active");
   tagline.textContent = "Bateria";
   textBlock.style.display = "block";
   discographyBlock.style.display = "none";
@@ -496,6 +512,7 @@ mateusBtn.onclick = () => {
   mateusBtn.classList.add("active");
   allisonBtn.classList.remove("active");
   taigoBtn.classList.remove("active");
+  anaBtn.classList.remove("active");
   tagline.textContent = "Baixo";
   textBlock.style.display = "none";
   discographyBlock.style.display = "none";
@@ -509,6 +526,7 @@ logoBtn.onclick = () => {
   allisonBtn.classList.remove("active");
   taigoBtn.classList.remove("active");
   mateusBtn.classList.remove("active");
+  anaBtn.classList.remove("active");
   tagline.textContent = "Metal Band";
   textBlock.style.display = "block";
   discographyBlock.style.display = "none";
@@ -524,6 +542,7 @@ discographyBtn.onclick = () => {
   allisonBtn.classList.remove("active");
   taigoBtn.classList.remove("active");
   mateusBtn.classList.remove("active");
+  anaBtn.classList.remove("active");
 
    // troca a logo para branca com fade
   fadeLogoSmooth("LogobandaBranca.png");
