@@ -299,7 +299,7 @@ body {
     <img src="LogobandaAllison.png" alt="Logo Allison" class="logo-img logo-allison">
     <img src="LogobandaMateus.png" alt="Logo Mateus" class="logo-img logo-mateus">
     <img src="LogobandaTaigo.png" alt="Logo Taigo" class="logo-img logo-taigon">
-    <img src="Logobanda.png" alt="Logo Ana" class="logo-img logo-ana">
+    <img src="LogobandaAna.png" alt="Logo Ana" class="logo-img logo-ana">
     <img src="LogobandaBranca.png" alt="Logo Discografia" class="logo-img logo-discography">
     <div class="tagline" id="tagline">Metal Band</div>
     <div class="divider"></div>
@@ -430,7 +430,25 @@ const allisonText = `
   rather than pure technical display.
 </p>
 `;
+ 
+const mateusText = `
+<p>
+  <strong>Mateus</strong> é o baixista da Economic Raped.
+  <br><br>
+  Baiano
+  <br><br>
+  Não corre.
+</p>
+`;
 
+const anaText = `
+<p>
+  <strong>Ana</strong> é a vocalista da Economic Raped.
+  <br><br>
+  Biografia em desenvolvimento.
+</p>
+`;
+  
 const taigoText = `
 <p>
   <strong>Taigo</strong>, baterista da Economic Raped, é natural de Santos/SP e
@@ -487,11 +505,11 @@ anaBtn.onclick = () => {
   mateusBtn.classList.remove("active");
 
   tagline.textContent = "Vocal";
-  textBlock.style.display = "none";
+  textBlock.style.display = "block";
   discographyBlock.style.display = "none";
   textBlock.innerHTML = anaText;
 
-  fadeLogoSmooth("Logobanda.png");
+  fadeLogoSmooth("LogobandaAna.png");
 };
   
 taigoBtn.onclick = () => {
@@ -516,9 +534,10 @@ mateusBtn.onclick = () => {
   taigoBtn.classList.remove("active");
   anaBtn.classList.remove("active");
   tagline.textContent = "Baixo";
-  textBlock.style.display = "none";
+  textBlock.style.display = "block";
   discographyBlock.style.display = "none";
-
+  textBlock.innerHTML = mateusText;
+  
   // volta para a logo original com fade
   fadeLogoSmooth("LogobandaMateus.png");
 };
