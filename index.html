@@ -19,7 +19,14 @@
   --purple: #7a1fa2;
   --text: #eaeaea;
 }
-
+  
+/* ===== MODO ANA ===== */
+body.ana {
+  --bg: #0a0003;
+  --red: #d20a2e;
+  --red-hover: #d20a2e;
+}
+  
 /* ===== MODO ALLISON ===== */
 body.allison {
   --bg: #080000;
@@ -277,7 +284,7 @@ body {
 <!-- INTEGRANTES -->
 <div class="members">
   <h2>Integrantes</h2>
-  <span class="member">Ana — Vocal</span>
+  <span class="member" id="anaBtn">Ana — Vocal</span>
   <span class="member" id="allisonBtn">Allison — Guitarra</span>
   <span class="member" id="mateusBtn">Mateus — Baixo</span>
   <span class="member" id="taigoBtn">Taigo — Bateria</span>
@@ -333,6 +340,7 @@ body {
 
 <script>
 const allisonBtn = document.getElementById("allisonBtn");
+const anaBtn = document.getElementById("anaBtn");
 const taigoBtn = document.getElementById("taigoBtn");
 const mateusBtn = document.getElementById("mateusBtn");
 const textBlock = document.getElementById("textBlock");
