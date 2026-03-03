@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Economic Raped</title>
 
-<!-- FAVICON (MESMA LOGO) -->
 <link rel="icon" type="image/png" href="Logobanda.png">
 
 <style>
@@ -20,28 +19,25 @@
   --text: #eaeaea;
 }
   
-/* ===== MODO ANA ===== */
+/* ===== Paginas ===== */
 body.ana {
   --bg: #0a0003;
   --red: #d20a2e;
   --red-hover: #d20a2e;
 }
   
-/* ===== MODO ALLISON ===== */
 body.allison {
   --bg: #080000;
   --red: #8b0000;
   --red-hover: #8b0000;
 }
 
-/* ===== MODO TAIGO ===== */
 body.taigo {
   --bg: #0b0012;
   --red: #7a1fa2;
   --red-hover: #7a1fa2;
 }
 
-/* ===== MODO MATEUS ===== */
 body.mateus {
   --bg: #001a0d;
   --red: #1fa26a;
@@ -57,7 +53,7 @@ body {
   transition: background 0.8s ease;
 }
 
-/* ================= INTEGRANTES ================= */
+/* ================= Bgl de integrantes q fica do lado ================= */
 .members {
   position: fixed;
   left: 60px;
@@ -103,11 +99,11 @@ body {
 
 /* ================= LOGO ================= */
 .band-block {
-  position: relative;      /* container relativo para a logo absoluta */
+  position: relative;      
   width: 420px;
   max-width: 92vw;
   margin: 0 auto;
-  padding-top: 60px;       /* distância do topo da página */
+  padding-top: 60px;       
   text-align: center;
 }
 
@@ -128,8 +124,8 @@ body {
 
 .logo-img.active {
   opacity: 1;
-  z-index: 3;          /* Logo ativa sempre na frente */
-  pointer-events: auto; /* Logo ativa responde ao hover */
+  z-index: 3;          
+  pointer-events: auto; 
 }
 
 .logo-img:hover {
@@ -139,7 +135,7 @@ body {
 }
   
 .tagline {
-  margin-top: 180px;        /* distância para a logo não “colar” totalmente */
+  margin-top: 180px;        
   font-size: 14px;
   letter-spacing: 5px;
   color: var(--red);
@@ -214,7 +210,7 @@ body {
   color: #bbb;
 }
 
-/* ================= PLAYER VISUAL ================= */
+/* ================= PLAYER ================= */
 .now-playing {
   position: fixed;
   right: 20px;
@@ -493,7 +489,6 @@ allisonBtn.onclick = () => {
   discographyBlock.style.display = "none";
   textBlock.innerHTML = allisonText;
 
-  // volta para a logo original com fade
   fadeLogoSmooth("LogobandaAllison.png");
 };
 
@@ -523,7 +518,6 @@ taigoBtn.onclick = () => {
   discographyBlock.style.display = "none";
   textBlock.innerHTML = taigoText;
 
-  // volta para a logo original com fade
   fadeLogoSmooth("LogobandaTaigo.png");
 };
 
@@ -538,7 +532,6 @@ mateusBtn.onclick = () => {
   discographyBlock.style.display = "none";
   textBlock.innerHTML = mateusText;
   
-  // volta para a logo original com fade
   fadeLogoSmooth("LogobandaMateus.png");
 };
 
@@ -553,7 +546,6 @@ logoBtn.onclick = () => {
   discographyBlock.style.display = "none";
   textBlock.innerHTML = bandText;
 
-  // volta para a logo original com fade
   fadeLogoSmooth("Logobanda.png");
 };
 
@@ -565,11 +557,10 @@ discographyBtn.onclick = () => {
   mateusBtn.classList.remove("active");
   anaBtn.classList.remove("active");
 
-   // troca a logo para branca com fade
   fadeLogoSmooth("LogobandaBranca.png");
 };
 
-// MOBILE
+// Celular
 if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
   document.body.classList.add("mobile");
   const content = document.querySelector(".content");
